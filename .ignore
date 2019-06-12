@@ -1,0 +1,7 @@
+/apache-tomcat-9.0.8
+/eclipse-oxygen3-workspace
+/*/*/lib
+/*/*/bin
+/*/*/ant
+/*/*/test
+startTomcatLaptop.bat
