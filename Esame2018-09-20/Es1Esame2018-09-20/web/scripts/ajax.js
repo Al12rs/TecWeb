@@ -1,5 +1,5 @@
 
-var partialResults = new Array();
+//var partialResults = new Array();
 var resultIndex = 0;
 
 /*function showMatrix(result) {
@@ -12,10 +12,6 @@ var resultIndex = 0;
 
 var responseHandlerTop = function (responseText, table) {
     result = JSON.parse(responseText);
-    if (isNaN(result.id)) {
-        alert("response did not contain a valid ID");
-        return;
-    }
     //partialResults[result.id].bottomMatrix = result.matrixResult;
     for (var rowIndex = 0; rowIndex < 5; rowIndex++) {
         var row = table.insertRow(rowIndex);
@@ -27,10 +23,6 @@ var responseHandlerTop = function (responseText, table) {
 
 var responseHandlerBottom = function (responseText, table) {
     result = JSON.parse(responseText);
-    if (isNaN(result.id)) {
-        alert("response did not contain a valid ID");
-        return;
-    }
     //partialResults[result.id].bottomMatrix = result.matrixResult;
     for (var rowIndex = 5; rowIndex < 10; rowIndex++){
         var row = table.insertRow(rowIndex);
@@ -45,20 +37,20 @@ function calcolaMatrice(operation, freshness) {
         alert("please insert valid fields");
         return;
     }
-    freshnessInNanos = parseInt(freshness) * 1000;
+    freshnessInMillis = parseInt(freshness) * 1000;
 
     var uri = "../matrixop";
     var targetElement = myGetElementById("risultato");
     var reqBody = new Object();
-    reqBody.id = resultIndex;
+    //reqBody.id = resultIndex;
 
     var table = document.createElement("TABLE");
-    table.createCaption().innerHTML = "Result of operation A" + result.operation + "B, index: " + result.id;
+    table.createCaption().innerHTML = "Result of operation A" + result.operation + "B, index: " + resultIndex;
     targetElement.appendChild(table);
 
     resultIndex++;
     reqBody.operation = operation;
-    reqBody.freshness = freshnessInNanos;
+    reqBody.freshness = freshnessInMillis;
     var postString = JSON.stringify(reqBody);
     ajaxSendPOSTRequest(uri + "top", postString, table, responseHandlerTop);
     ajaxSendPOSTRequest(uri + "bottom", postString, table, responseHandlerBottom);

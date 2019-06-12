@@ -17,6 +17,7 @@ import beans.Result;
 
 public class MatrixOpTop extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
 	private Gson gson;
 
 	@Override
@@ -57,10 +58,83 @@ public class MatrixOpTop extends HttpServlet {
 		this.getServletContext().setAttribute("cacheTop", cacheTop);
 	}
 
+    synchronized private void cachePut(Result resultToCache) {
+		ArrayList<Result> cacheBottom = (ArrayList<Result>) this.getServletContext().getAttribute("cacheBottom");
+		cacheBottom.add(resultToCache);
+	}
+
+	private Result findCachedResult(String operation, long freshness){
+		ArrayList<Result> cacheBottom = (ArrayList<Result>) this.getServletContext().getAttribute("cacheBottom");
+		int size = cacheBottom.size();
+		for (int i = size - 1; i >= 0; i--) {
+			if (cacheBottom.get(i).getOperation().equals(operation)) {
+				if ((new Date()).getTime() - cacheBottom.get(i).getFreshness() <= freshness) {
+					return cacheBottom.get(i);
+				} else {
+					// visto che i risultati sono salvati sequenzialmente se questo risultato non è abbastanza fresco non ha senso controllare i più vecchi.
+					return null;
+				}
+			}
+		}
+		return null;
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		
+        //get jason object "e" of the post body
+		BufferedReader buf = req.getReader();
+		StringBuilder jsonReceived = new StringBuilder();
+		String currentLine=null;
+		while((currentLine = buf.readLine())!=null) {
+			jsonReceived.append(currentLine);
+			jsonReceived.append('\n');
+		}
+		JsonObject e = new JsonParser().parse(jsonReceived.toString()).getAsJsonObject();
+
+		String operation = e.get("operation").getAsString();
+		long freshness = e.get("freshness").getAsLong();
+		
+		//check di esistenza
+		Result cachedResult = findCachedResult(operation, freshness);
+		if (cachedResult != null) {
+			// cache hit
+			resp.getWriter().println(gson.toJson(cachedResult.getResult()));
+			return;
+		}
+		//cache miss
+
+		//calcolo vero
+		double[][] A = (double[][]) this.getServletContext().getAttribute("ATop");
+		double[][] B = (double[][]) this.getServletContext().getAttribute("BTop");
+
+		double [][] resultMatrix = new double[5][10];
+
+		if (operation.equals("-")){
+			for(int i = 0; i<5; i++){
+				for(int j=0; j<10; j++){
+					resultMatrix[i][j] = A[i][j] - B[i][j];
+				}
+			}
+		} else {
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 10; j++) {
+					resultMatrix[i][j] = A[i][j] + B[i][j];
+				}
+			}
+		}
+
+		//save result in cache:
+		Result result = new Result();
+		result.setResult(resultMatrix);
+		result.setOperation(operation);
+		result.setRowsPosition(1);
+		result.setFreshness((new Date()).getTime());
+		cachePut(result);
+		
+		
+		resp.getWriter().println(gson.toJson(resultMatrix));
+        
 	}
 	
 }
