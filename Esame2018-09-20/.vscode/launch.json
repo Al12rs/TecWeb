@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MainXMLParser",
+            "request": "launch",
+            "mainClass": "MainXMLParser",
+            "projectName": "Esame2018-09-20_b103955e"
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <ludoteca xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ludoteca.xsd">
-    <AV id="1" titolo="light my fire" autore="Doors" casaProduttrice="boo" annoProduzione="1997" fasciaEta="13-120" lingua="inglese" durata="360" />
-    <CDM id="2" titolo="the dark knight" autore="Nolan" casaProduttrice="Warner" annoProduzione="2010" fasciaEta="3-120" lingua="inglese" durata="150" />
-    <GT id="3" nome="monopoli" autore="dio" marca="disney" fasciaEta="0+" modalitaUso="GG" />
+    <AV id="1" titolo="light my fire" autore="Doors" casaProduttrice="boo" annoProduzione="1997" fasciaEta="0-3" lingua="italiano" durata="360" />
+    <CDM id="2" titolo="the dark knight" autore="Nolan" casaProduttrice="Warner" annoProduzione="2010" fasciaEta="0-3" lingua="italiano" durata="150" />
+    <GT id="3" nome="monopoli" autore="dio" marca="disney" fasciaEta="6-8" modalitaUso="GI" />
 </ludoteca>

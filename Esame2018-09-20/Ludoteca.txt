@@ -1,0 +1,6 @@
+CD Musicali, fascia 0-3, Trovati: 1
+Cdmusicale [id=2, annoProduzione=2010, autore=Nolan, casaProduttrice=Warner, durata=150, fasciaEta=0-3, lingua=italiano, titolo=the dark knight]
+Audiovisivi Italiani, Trovati: 1
+Audiovisivo [id=1, annoProduzione=1997, autore=Doors, casaProduttrice=boo, durata=360, fasciaEta=0-3, lingua=italiano, titolo=light my fire]
+Giocattoli tradizionali, Fascia 6-8, Trovati: 1
+GiocattoloTradizionale [id=3, autore=dio, fasciaEta=6-8, marca=disney, modalitaUso=GI, nome=monopoli]
