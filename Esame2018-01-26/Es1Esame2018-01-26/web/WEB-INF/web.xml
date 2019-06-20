@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <display-name>Es1Esame2018-01-26</display-name>
+    <description>
+      Esercizio 1 Esame del 26 gennaio 2018
+    </description>
+
+	<!-- Context attributes to be used throughout the application -->
+	<context-param>
+		<param-name>dao</param-name>
+		<param-value>IDENTIFICATIVO_DELL_IMPLEMENTAZIONE</param-value>
+	</context-param>
+
+	<servlet>
+        <servlet-name>ContaOccorrenze</servlet-name>
+        <servlet-class>servlets.ContaOccorrenze</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+        <servlet-name>ContaOccorrenze</servlet-name>
+        <url-pattern>/contaoccorrenze</url-pattern>
+    </servlet-mapping>
+	
+    <!-- Define servlets that are included in the application -->
+
+	<!-- Welcome pages -->
+	<!-- pleonastico: tomcat "tenta" in automatico le index.html e index.jsp -->
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+		
+	<!-- Handle exceptions and errors -->
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errors/notfound.html</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/errors/failure.jsp</location>
+	</error-page>
+	 
+</web-app>
