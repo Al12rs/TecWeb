@@ -1,0 +1,22 @@
+<web-app>
+    <display-name>BeginnersBookDemo</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>DemoServlet</servlet-class>
+        <init-param>
+            <param-name>MyName</param-name>
+            <param-value>Chaitanya</param-value>            
+        </init-param>
+        <init-param>
+            <param-name>MyWebsite</param-name>
+            <param-value>Beginnersbook.com</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/scdemo</url-pattern>
+    </servlet-mapping>
+</web-app>
