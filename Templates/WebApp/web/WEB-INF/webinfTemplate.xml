@@ -1,0 +1,32 @@
+<web-app>
+    <display-name>BeginnersBookDemo</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+	
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>servlets.LoginServlet</servlet-class>
+		<init-param>
+			<param-name>sessionTimeLimit</param-name>
+			<param-value>600</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/loginservlet</url-pattern>
+	</servlet-mapping>
+	
+	<!--Set session inactivity timeout in minutes,
+	in alternative use this java code:
+	
+	HttpSession session = request.getSession();
+	//uses seconds
+	session.setMaxInactiveInterval(20*60);
+	
+	-->
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+
+</web-app>
