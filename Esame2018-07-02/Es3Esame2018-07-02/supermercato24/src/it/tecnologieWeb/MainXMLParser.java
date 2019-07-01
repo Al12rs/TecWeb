@@ -1,3 +1,5 @@
+package it.tecnologieWeb;
+
 
 
 import java.io.*;
@@ -22,8 +24,11 @@ public class MainXMLParser {
 		 * MainXMLParser.class.getSimpleName() + " xmlFilename"); exit(1); }
 		 */
 
-        xmlFilename = "C:\\Repos\\TecWeb\\Esame2018-09-20\\Es3Esame2018-07-02\\supermercato24\\resources\\ordine1.xml";
+        xmlFilename = "resources/ordine1.xml";
         XmlApplication app = new XmlApplication();
+        
+        //DOM
+        System.out.println("DOM Parsing Results");
 		app.parseDOM(xmlFilename);
 		Float totalCost = app.getCostoTotaleSpesa();
 		if (totalCost == null) {
@@ -42,7 +47,28 @@ public class MainXMLParser {
 				System.out.println(catCount.get(cat));
 			}
 		}
-
+		
+		//SAX
+		System.out.println("SAX Parsing Results");
+		app.parseSAX(xmlFilename);
+		totalCost = app.getCostoTotaleSpesaSax();
+		if (totalCost == null) {
+			System.out.println("How?");
+		} else {
+			System.out.println(totalCost);
+		}
+		
+		Hashtable<String, Integer> categoryCount = app.getCountCategoriaSax();
+		if (categoryCount == null) {
+			System.out.println("How?");
+		} else {
+			for (String cat : categoryCount.keySet()) {
+				System.out.println(cat);
+				System.out.println(categoryCount.get(cat));
+			}
+		}
+		
+		
 		System.out.println("fine");
 
 	}

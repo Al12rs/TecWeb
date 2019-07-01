@@ -1,3 +1,5 @@
+package it.tecnologieWeb;
+
 import java.io.File;
 import java.util.Hashtable;
 
@@ -79,6 +81,7 @@ public class XmlApplication {
     }
 
     // custom methods:
+    //DOM
     public Hashtable<String, Integer> getCountCategoria() {
         if (this.domDocument == null)
             return null;
@@ -111,6 +114,15 @@ public class XmlApplication {
         }
         
         return result;
+    }
+    
+    //SAX
+    public Float getCostoTotaleSpesaSax() {
+        return handler.getCostoTotale();
+    }
+    
+    public Hashtable<String, Integer> getCountCategoriaSax() {
+        return handler.getCountCategoria();
     }
 
 }

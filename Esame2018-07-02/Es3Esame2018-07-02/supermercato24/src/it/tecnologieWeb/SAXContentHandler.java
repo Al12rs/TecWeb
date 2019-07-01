@@ -1,5 +1,8 @@
+package it.tecnologieWeb;
 
 
+
+import java.util.Hashtable;
 import java.util.Vector;
 
 import org.xml.sax.Attributes;
@@ -8,68 +11,70 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class SAXContentHandler extends DefaultHandler {
 	
-	boolean inFirstName = false;
-	String firstName = null;
-	boolean inLastName = false;
-	String lastName = null;
-	boolean inTelephone = false;
-	String Telephone = null;
-	boolean mmFound = false;
+	float costoTotale = 0;
+	Hashtable<String, Integer> CountCategoria = new Hashtable<String, Integer>();
+	private int midCounter = 0;
+	private boolean inFV = false;
+	private boolean inPP = false;
+	private boolean inL = false;
+	private boolean inCP = false;
+	private boolean inPrezzo = false;
 	
 	public void startElement (String namespaceURI, String localName, String rawName, Attributes atts) { 
 		//System.out.println("AddressListContentHandler.startElement   namespaceURI=" + namespaceURI + " localName=" + localName + " rawName=" +rawName +" atts="+atts);
-		if (localName.equals("Information")){
-			peopleAmount++;
-			firstName = null;
-			lastName = null;
+		
+		if(localName.equals("FV")) {
+			inFV=true;
 		}
-		else if(localName.equals("First_name")){
-			inFirstName = true;
+		if(localName.equals("PP")) {
+			inPP=true;
 		}
-		else if(localName.equals("Last_name")){
-			inLastName = true;
+		if(localName.equals("L")) {
+			inL =true;
 		}
-		else if(localName.equals("Telephone")){
-			inTelephone = true;
+		if(localName.equals("CP")) {
+			inCP =true;
+		}
+		if(localName.equals("prodotto") && (inFV || inPP || inL || inCP)) {
+			midCounter++;
+		}
+		if(localName.equals("prezzo")) {
+			inPrezzo =true;
 		}
 	} 
 
 	public void characters (char ch[], int start, int length) {
 		//System.out.println("AddressListContentHandler.characters   start=" + start + " length=" + length + " ch=" +new String(ch,start,length));
-		if( inFirstName ){
-			firstName = new String(ch,start,length);
-		}
-		else if( inLastName ){
-			lastName = new String(ch,start,length);
-		}
-		else if( inTelephone ){
-			Telephone = new String(ch,start,length);
+		if(inPrezzo) {
+			float prezzoProdotto = Float.parseFloat((new String(ch, start, length)).substring(1));
+			this.costoTotale += prezzoProdotto;
 		}
 	} 
 
 	public void endElement(String namespaceURI, String localName, String qName) {
 		//System.out.println("AddressListContentHandler.endElement   namespaceURI=" + namespaceURI + " localName=" + localName + " qName=" +qName);
-		if(localName.equals("First_name")){
-			inFirstName = false;
+		if(localName.equals("FV")) {
+			inFV=false;
+			this.CountCategoria.put("FV", midCounter);
+			midCounter=0;
 		}
-		else if(localName.equals("Last_name")){
-			inLastName = false;
+		if(localName.equals("PP")) {
+			inPP=false;
+			this.CountCategoria.put("PP", midCounter);
+			midCounter=0;
 		}
-		else if(localName.equals("Telephone")){
-			inTelephone = false;
-			if( firstName.startsWith("Don")){
-				donTel.addElement(Telephone);
-			}
+		if(localName.equals("L")) {
+			inL=false;
+			this.CountCategoria.put("L", midCounter);
+			midCounter=0;
 		}
-		else if (localName.equals("Information")){
-			if( !mmFound && firstName!=null && lastName!=null ){ // controllo non necessario per documenti XML validi
-				if( firstName.equals("Mickey") && lastName.equals("Mouse") ){
-					mmFound = true;
-				}
-				else{
-					peoplePreMM++;
-				}
-			}
+		if(localName.equals("CP")) {
+			inCP=false;
+			this.CountCategoria.put("CP", midCounter);
+			midCounter=0;
+		}
+		if(localName.equals("prezzo")) {
+			inPrezzo = false;
 		}
 	}
 	
@@ -82,20 +87,19 @@ public class SAXContentHandler extends DefaultHandler {
 	public int getIgnorableWhitespace(){
 		return ignorableWhitespace;
 	}
-	
-	private int peopleAmount = 0;
-	public int getPeopleAmount(){
-		return peopleAmount;
-	}
-	
-	private int peoplePreMM = 0;
-	public int getPeoplePreMM(){
-		return peoplePreMM;
-	}
 
 	private Vector<String> donTel = new Vector<String>();
 	public Vector<String> getDonTel(){
 		return donTel;
+	}
+	
+	//metodi di restituzione risultati
+	public Float getCostoTotale() {
+		return costoTotale;
+	}
+
+	public Hashtable<String, Integer> getCountCategoria() {
+		return CountCategoria;
 	}
 	
 }	
