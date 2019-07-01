@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="one2many.list.bees.A" table="one2many_list_bees_A" entity-name="one2many.list.bees.A">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<list name="bees" table="one2many_list_bees_B">
+			<!-- colonna dell'altra tabella che fa riferimento a questa classe -->
+			<key column="a_id"></key>
+			<index column="indice"></index>
+			<one-to-many class="one2many.list.bees.B"/>
+		</list>
+	</class>
+
+<class name="one2many.list.bees.B" table="one2many_list_bees_B" entity-name="one2many.list.bees.B">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+	</class>
+	
+	<class name="one2many.list.string.A" table="one2many_list_string_A" entity-name="one2many.list.string.A">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<list name="strings" table="one2many_list_string_strings">
+			<key column="id"></key>
+			<index column="indice"></index>
+			<element column="value" type="string"></element>
+		</list>
+	</class>
+	
+	<class name="one2many.set.bees.A" table="one2many_set_bees_A" entity-name="one2many.set.bees.A">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<set name="bees" table="one2many_set_bees_B">
+			<!-- colonna dell'altra tabella che fa riferimento a questa classe -->
+			<key column="a_id"></key>
+			<one-to-many class="one2many.set.bees.B"/>
+		</set>
+	</class>
+	
+	<class name="one2many.set.bees.B" table="one2many_set_bees_B" entity-name="one2many.set.bees.B">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+	</class>
+	
+	<class name="one2many.set.string.A" table="one2many_set_string_A" entity-name="one2many.set.string.A">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<set name="strings" table="one2many_set_string_strings">
+			<key column="id"></key>
+			<element column="value" type="string"></element>
+		</set>
+	</class>
+</hibernate-mapping>

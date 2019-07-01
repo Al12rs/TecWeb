@@ -1,0 +1,7 @@
+settare JAVA_HOME di sistema a C:\Program Files\Java\jdk1.8.0_31
+
+far partire tomcat esterno
+
+cambiare la jre di default del progetto con la jdk C:\Program Files\Java\jdk1.8.0_31
+
+cambiare deploy di ant a C:/Users/s0000xxxxxx/Desktop/apache-tomcat-8.0.22

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login page</title>
+<link rel="stylesheet" href="styles/mystyle.css" type="text/css"></link>
+</head>
+<body>
+	<div id="container">
+		<div id="header">Esame Tecnologie Web</div>
+		<div id="body">
+			<script src="scripts/forms.js" type="text/javascript"></script>
+			<fieldset><legend>form to compile</legend>
+			<form name="login" action="loginservlet"
+				onsubmit="return validateLoginForm(this)" method="post">
+				<label for="usermail">Email</label>
+				<input type="email" name="usermail" placeholder="yourname@email.com" required>
+				<br />
+				<label for="username">Username</label>
+				<input type="text" name="username" placeholder="username" required>
+				<br />
+				<label for="password">Password</label>
+				<input type="password" name="password" placeholder="password" required>
+				<br />
+				<input type="submit" value="Login">
+			</form>
+			</fieldset>
+		</div>
+		<div id="footer">
+			Esame template &copy; Federico Baldassarre 2016<br />
+		</div>
+	</div>
+</body>
+</html>

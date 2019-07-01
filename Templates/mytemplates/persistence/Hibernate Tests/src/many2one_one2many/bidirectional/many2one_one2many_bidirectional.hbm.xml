@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="many2one_one2many.bidirectional.list.bees.A" table="many2one_one2many_bidirectional_list_bees_A" entity-name="many2one_one2many.bidirectional.list.bees.A">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<list name="bees" table="many2one_one2many_bidirectional_list_bees_B" inverse="true" lazy="true">
+			<!-- colonna dell'altra tabella che fa riferimento a questa classe -->
+			<key column="a_id"></key>
+			<index column="indice"></index>
+			<one-to-many class="many2one_one2many.bidirectional.list.bees.B"/>
+		</list>
+	</class>
+	
+	<class name="many2one_one2many.bidirectional.list.bees.B" table="many2one_one2many_bidirectional_list_bees_B" entity-name="many2one_one2many.bidirectional.list.bees.B">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+		<!-- colonna di questa tabella che fa riferimento all'altra classe -->
+		<many-to-one name="a" class="many2one_one2many.bidirectional.list.bees.A" column="a_id" lazy="proxy"></many-to-one>
+	</class>
+	
+	<class name="many2one_one2many.bidirectional.set.bees.A" table="many2one_one2many_bidirectional_set_bees_A" entity-name="many2one_one2many.bidirectional.set.bees.A">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<set name="bees" table="many2one_one2many_bidirectional_set_bees_B">
+			<!-- colonna dell'altra tabella che fa riferimento a questa classe -->
+			<key column="a_id"></key>
+			<one-to-many class="many2one_one2many.bidirectional.set.bees.B"/>
+		</set>
+
+	</class>
+	
+	<class name="many2one_one2many.bidirectional.set.bees.B" table="many2one_one2many_bidirectional_set_bees_B" entity-name="many2one_one2many.bidirectional.set.bees.B">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+		<!-- colonna di questa tabella che fa riferimento all'altra classe -->
+		<many-to-one name="a" class="many2one_one2many.bidirectional.set.bees.A" column="a_id"/>
+	</class>
+</hibernate-mapping>

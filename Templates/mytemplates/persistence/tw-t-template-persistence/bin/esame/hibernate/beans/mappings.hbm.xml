@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="it.unibo.tw.es3.beans.Partecipante" table="partecipante">
+		<id name="id" column="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="nickName" column="nickName"></property>
+		<property name="nome" column="nome"></property>
+		<property name="cognome" column="cognome"></property>
+		<property name="eta" column="eta"></property>
+		
+        <set name="parties" table="party_partecipante">
+			<key column="idPartecipante" />
+			<many-to-many column="idParty" class="it.unibo.tw.es3.beans.Party"/>
+		</set>
+	
+    </class>
+</hibernate-mapping>
+

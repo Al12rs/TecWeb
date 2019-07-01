@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="one2one.A" table="one2one_A"
+		entity-name="one2one.A">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<one-to-one name="b" class="one2one.B"/>
+	</class>
+	
+	<class name="one2one.B" table="one2one_B" entity-name="one2one.B">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+		
+		<one-to-one name="a" class="one2one.A"/>
+	</class>
+</hibernate-mapping>

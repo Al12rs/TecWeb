@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>Supermercato24</title>
+
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+
+    <link type="text/css" href="styles/default.css" rel="stylesheet" />
+    <link type="text/css" href="styles/defaultSupermarket.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="scripts/utils.js"></script>
+    <script type="text/javascript" src="scripts/supermarket.js"></script>
+</head>
+
+<body onload="populatePage()">
+
+    <div class="topBar">
+
+        <div class="topBarLeft">
+            <a href="/home.html">
+                <!-- O a questa pagina se è questa la home-->
+                <img class="imageSpace" src="images/flickr_logo.png" alt="supermarket logo" />
+            </a>
+        </div>
+
+        <div class="topBarRight">
+            <ul class="menu" id="navMenu" style="padding-top: 0.5%;">
+                <li><a href="#">Accedi</a></li>
+                <li> / </li>
+                <li><a href="#">Registrati</a></li>
+            </ul>
+        </div>
+
+    </div><!-- topBar end -->
+
+    <div id="backgoundSetter" class="mainWindow">
+        <div id="centralBlock">
+            <h1 class="horizontalCenter">La spesa online, a casa tua in giornata.</h1>
+            <h2 class="horizontalCenter">Anche in <span class="bold">1 ora!</span></h2>
+            <p class="horizontalCenter">Inserisci il tuo CAP e scopri i supermercati vicini a te:</p>
+            <form>
+                <input class="horizontalCenter" id="cap" type="text" placeholder="Inserisci il tuo CAP" value=""/>
+                <input class="horizontalCenter" id="quartiere" type="text" value="" disabled />
+                <button class="horizontalCenter" type="button" onclick="trovaClicked()"><span class="bold">TROVA I SUPREMERCATI ></span></button>
+            </form>
+            <div class="greenBackgorund">
+                <ul class="vantaggi">
+                    <li>Eviti traffico, stress,code e borse pesanti.</li>
+                    <li>Guadagni due ore a settimana di libertà.</li>
+                </ul>
+            </div>
+
+        </div>
+        <div id="ratingDiv">
+            <span> recensioni clienti</span>
+        </div>
+        <div id="slider">
+            <button id="sliderBtn" style="position: absolute; right: 0px" type="button" onclick="sliderBtnClicked()">></button>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

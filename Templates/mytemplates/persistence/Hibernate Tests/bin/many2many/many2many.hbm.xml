@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="many2many.bees.A" table="many2many_bees_A"
+		entity-name="many2many.bees.A">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<set name="bees" table="many2many_bees_A_____many2many_bees_B" inverse="true">
+			<!-- colonna della tabella di mezzo che fa riferimento a questa classe -->
+			<key column="a_ids" />
+			<!-- colonna della tabella di mezzo che fa riferimento all'altra classe --> 
+			<many-to-many column="b_ids" class="many2many.bees.B" />
+		</set>
+	</class>
+	
+	<class name="many2many.bees.B" table="many2many_bees_B"
+		entity-name="many2many.bees.B">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="value" not-null="true" unique="true"></property>
+
+		<set name="aas" table="many2many_bees_A_____many2many_bees_B" inverse="false">
+			<!-- colonna della tabella di mezzo che fa riferimento a questa classe -->
+			<key column="b_ids" />
+			<!-- colonna della tabella di mezzo che fa riferimento all'altra classe -->
+			<many-to-many column="a_ids" class="many2many.bees.A" />
+		</set>
+	</class>
+</hibernate-mapping>

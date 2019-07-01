@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="primarykey.B" table="primarykey_B" entity-name="primarykey.B">
+		<!-- La primary key è id -->
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<!-- La coppia value1-value2 è unique-->
+		<natural-id> 
+			<property name="value1"></property>
+			<property name="value2"></property>
+		</natural-id>
+	</class>
+</hibernate-mapping>

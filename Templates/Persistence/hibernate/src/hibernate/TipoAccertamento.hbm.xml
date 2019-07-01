@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="it.unibo.tw.hibernate.TipoAccertamento" table="tipoaccertamento">
+        <!--Chiave surrogata con ID-->
+        <id name="tipoAccertamentoID" column="tipoAccId" />
+        <property name="codiceTipoAccertamento" column="codiceTipoAccertamento" unique="true" not-null="true" />
+        <property name="descrizione" column="descrizione" />
+        
+        <set name="accertamenti" table="accertamenti" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipoAccIdFKAcc" not-null="false" />
+            </key>
+            <one-to-many class="hibernate.Accertamento" />
+        </set>
+        
+        <set name="ospedali" table="tipoAccertamento_ospedale" inverse="false" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="tipoAccIdFKOsp" not-null="false" />
+            </key>
+            <many-to-many column="ospId" class="hibernate.Ospedale" />
+        </set>
+    </class>
+</hibernate-mapping>

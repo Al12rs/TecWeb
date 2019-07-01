@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - JDBCgenerator",
+            "request": "launch",
+            "mainClass": "it.unibo.tw.model.JDBCgenerator",
+            "projectName": "07_TecWeb"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - JDBCgenerator",
+            "request": "launch",
+            "mainClass": "it.unibo.JDBCgenerator",
+            "projectName": "07_TecWeb"
+        }
+    ]
+}
