@@ -1,4 +1,4 @@
-package Resturant;
+package jdbc;
 
 import java.sql.*;
 

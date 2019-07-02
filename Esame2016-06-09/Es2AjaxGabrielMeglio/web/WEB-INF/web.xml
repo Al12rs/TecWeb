@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     version="2.4">
 
-    <display-name>Esame</display-name>
+    <display-name>Template</display-name>
     <description>
-      esame
+      An empty project to use as a template for your own ones
     </description>
 
 	<!-- Context attributes to be used throughout the application -->
@@ -22,36 +22,21 @@
 	<!-- pleonastico: tomcat "tenta" in automatico le index.html e index.jsp -->
 	
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>pages/home.html</welcome-file>
 	</welcome-file-list>
 	
 	<servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>servlets.LoginServlet</servlet-class>
+		<servlet-name>Filter</servlet-name>
+		<servlet-class>servlets.Filter</servlet-class>
 		<init-param>
-			<param-name>sessionTimeLimit</param-name>
-			<param-value>600</param-value>
+			<param-name>testo</param-name>
+			<param-value>resources/testo.txt</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/loginservlet</url-pattern>
+		<servlet-name>Filter</servlet-name>
+		<url-pattern>/filter</url-pattern>
 	</servlet-mapping>
-	
-	<!--Set session inactivity timeout in minutes,
-	in alternative use this java code:
-	
-	HttpSession session = request.getSession();
-	//uses seconds
-	session.setMaxInactiveInterval(20*60);
-	
-	-->
-	
-	<!--
-	<session-config>
-		<session-timeout>10</session-timeout>
-	</session-config>
-	-->
 		
 	<!-- Handle exceptions and errors -->
 	

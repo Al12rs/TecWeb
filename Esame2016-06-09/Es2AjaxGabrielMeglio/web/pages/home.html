@@ -1,0 +1,37 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<title>Home</title>
+	<script type="text/javascript" src="../scripts/utils.js"></script>
+	<script type="text/javascript" src="../scripts/ajax.js"></script>
+	<link rel="stylesheet" href="../styles/default.css" type="text/css" />
+</head>
+
+<body>
+	<form>
+		Stringhe:<br /><br />
+		str1
+		<input type="text" name="str1" value="" />
+		<input type="button" value="Find Occurrences" id="calculateButton"
+			onclick="findOcc(this.form.str1)" /><br />
+		str2
+		<input type="text" name="str2" value="" />
+		<input type="button" value="Find Occurrences" id="calculateButton"
+			onclick="findOcc(this.form.str2)" /><br />
+		str3
+		<input type="text" name="str3" value="" />
+		<input type="button" value="Find Occurrences" id="calculateButton"
+			onclick="findOcc(this.form.str3)" /><br />
+	</form>
+	<br />
+	<br />
+	<label>Risultato:</label>
+	<div name="risultato" id="risultato">
+
+	</div>
+</body>
+
+</html>
