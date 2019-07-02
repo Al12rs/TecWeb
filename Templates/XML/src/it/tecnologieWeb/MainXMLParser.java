@@ -20,6 +20,14 @@ public class MainXMLParser {
 		String xmlFilename;
 
 		/*
+		//if autput is to go on a file
+		String outFile ="";
+		PrintWriter outWriter = new PrintWriter(outFile);
+		outWriter.println("result:");
+		outWriter.close();
+		*/
+		
+		/*
 		 * if (args.length != 0) { System.out.println("usage: " +
 		 * MainXMLParser.class.getSimpleName() + " xmlFilename"); exit(1); }
 		 */

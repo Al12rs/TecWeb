@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Elementi definiti -->
+    <xs:element name="takeaway" type="takeawayType" />
+    
+    <!--Tipo takeaway -->
+    <xs:complexType name="takeawayType">
+        <xs:sequence>
+            <xs:element name="ristorante" type="restourantType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!--Tipo takeaway -->
+    <xs:complexType name="restourantType">
+        <xs:sequence>
+            <xs:element name="indirizzo" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                    <xs:attribute name="via" type="xs:string" use="required" />
+                    <xs:attribute name="numerocivico" type="xs:string" use="required" />
+                    <xs:attribute name="cap" type="xs:positiveInteger" use="required" />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="telefono" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                    <xs:attribute name="prefisso" type="xs:string" use="required" />
+                    <xs:attribute name="numero" type="xs:positiveInteger" use="required" />
+                </xs:complexType>
+            </xs:element>
+            
+            <!--supposizione che se un ristorante non propone piatti di una cat essa compare ma vuota -->
+            <xs:element name="antipasti" type="categoryType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="primi" type="categoryType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="secondi" type="categoryType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="contorni" type="categoryType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="dessert" type="categoryType" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="nome" type="xs:string" use="required" />
+        <xs:attribute name="localita" type="xs:string" use="required" />
+        <xs:attribute name="link" type="xs:string" use="optional" />
+    </xs:complexType>
+    
+    <!--Tipo categoria -->
+    <xs:complexType name="categoryType">
+        <xs:sequence>
+            <xs:element name="piatto" type="plateType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--Tipo piatto -->
+    <xs:complexType name="plateType">
+        <xs:sequence>
+            <xs:element name="ingrediente" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="nomepiatto" type="xs:string" use="required" />
+        <xs:attribute name="prezzo" type="xs:string" use="required" />
+    </xs:complexType>
+    
+</xs:schema>

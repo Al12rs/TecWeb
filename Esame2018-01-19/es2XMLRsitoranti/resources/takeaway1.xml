@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<takeaway>
+    <ristorante nome="name" localita="posto" link="opzionale">
+        <indirizzo via="nullo" numerocivico="0" cap="433332" />
+        <telefono prefisso="+39" numero="21839" />
+        <antipasti>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </antipasti>
+        <primi>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </primi>
+        <secondi>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </secondi>
+        <contorni>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </contorni>
+        <dessert>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </dessert>
+    </ristorante>
+    <ristorante nome="name2" localita="posto2" link="opzionale">
+        <indirizzo via="nullo" numerocivico="0" cap="433332"/>
+        <telefono prefisso="+39" numero="21839" />
+        <antipasti>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </antipasti>
+        <primi>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </primi>
+        <secondi>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </secondi>
+        <dessert>
+            <piatto nomepiatto="nomepiattp" prezzo="12">
+                <ingrediente>farina</ingrediente>
+                <ingrediente>2uova</ingrediente>
+            </piatto>
+        </dessert>
+    </ristorante>
+</takeaway>
+
