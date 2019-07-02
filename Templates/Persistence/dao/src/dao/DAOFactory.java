@@ -1,4 +1,4 @@
-package it.unibo.tw.dao;
+package dao;
 
 
 import it.unibo.tw.dao.db2.Db2DAOFactory;

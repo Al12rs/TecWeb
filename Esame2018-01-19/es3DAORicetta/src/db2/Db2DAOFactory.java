@@ -78,8 +78,17 @@ public class Db2DAOFactory extends DAOFactory {
 
 	// --------------------------------------------
 	@Override
-	public #TypeDAO get#TypeDAO() {
-		return new Db2#TypeDAO();
+	public RicettaDAO getRicettaDAO() {
+		return new Db2RicettaDAO();
+	}
+
+	@Override
+	public IngredienteDAO getIngredienteDAO() {
+		return new Db2getIngredienteDAO();
+	}
+	@Override
+	public Ricetta_IngredientiDAO getRicetta_IngredientiDAO() {
+		return new Db2Db2Ricetta_IngredientiDAO();
 	}
 	
 }

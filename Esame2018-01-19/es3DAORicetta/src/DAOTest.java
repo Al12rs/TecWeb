@@ -8,7 +8,7 @@ public class DAOTest {
 	
 	static PrintWriter pw=null;
 	
-	public static final int DAO = DAOFactory.MYSQL;
+	public static final int DAO = DAOFactory.DB2;
 	
 
 	//Metodi soluzione
@@ -61,27 +61,29 @@ public class DAOTest {
 	public static void main(String[] args) {
 		
 		
-		RistorantePiattoMappingDAO mappingDAO = DAOFactory.getDAOFactory(DAO).getRistorantePiattoMappingDAO();
+		Ricetta_IngredientiDAO mappingDAO = DAOFactory.getDAOFactory(DAO).getRicetta_IngredientiDAO();
 		mappingDAO.dropTable();
-		// Ristoranti
+		mappingDAO.createTable();
+		// Ricette
 		
 		DAOFactory daoFactoryInstance = DAOFactory.getDAOFactory(DAO);
-		RistoranteDAO ristoranteDAO = daoFactoryInstance.getRistoranteDAO();
-		ristoranteDAO.dropTable();
-		ristoranteDAO.createTable();
+		RicettaDAO ricettaDAO = daoFactoryInstance.getRicettaDAO();
+		ricettaDAO.dropTable();
+		ricettaDAO.createTable();
 		
-		RistoranteDTO r = new RistoranteDTO();
+		RicettaDTO r = new RicettaDTO();
 		r.setId(1);
-		r.setNomeRistorante("E' cucina");
-		r.setIndirizzo("Via G. Leopardi, 24, Bologna");
+		r.setNomeRicetta("pizza");
+		r.set("Via G. Leopardi, 24, Bologna");
 		r.setRating(5);
 		ristoranteDAO.create(r);
 
 		r = new RistoranteDTO();
 		r.setId(2);
 		r.setNomeRistorante("Camst");
-		r.setIndirizzo("Viale Risorgimento, 2, Bologna");
-		r.setRating(2);
+		r.setTempoPreparazione(22);
+		r.setLivelloDifficolta(3);
+		r.setCalorie(222);
 		ristoranteDAO.create(r);
 		
 		r = new RistoranteDTO();
