@@ -116,4 +116,19 @@
     </div>
 
     </body>
+    <%
+    /*
+        Domanda 1, utente e sessioni concorrenti:
+        In realtà in questa implementazione priva 
+        di business logic non ci sono particolari problemi in
+        questo caso.
+
+        Domanda due, più amministratori con copie concorrenti:
+        In questo caso invece ci possono essere problemi in quanto l'operazione
+        di copia non è atomica, quindi si possono ottenere degli stati inconsistenti
+        delle sessioni. Una possibile soluzione è quella di incapsulare
+        tutte le operazioni sulla lista di sessioni in blocchi synchronized su 
+        application context.
+    */
+    %>
 </html>
