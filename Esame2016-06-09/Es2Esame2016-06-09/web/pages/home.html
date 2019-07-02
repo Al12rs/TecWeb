@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<title>Home</title>
+	<link rel="stylesheet" href="styles/mystyle.css" type="text/css"/>
+	<script type="text/javascript" src="scripts/ajax.js"/>
+</head>
+
+<body>
+	<h1>Conteggio delle parole indicate in testo.txt</h1>
+	<br/>
+	<form name="input">
+		<label>Stringa1:</label>
+		<br/>
+		<input type="text" name="str1" value=""/>
+		<br/>
+		<label>Stringa2:</label>
+		<br/>
+		<input type="text" name="str2" value=""/>
+		<br/>
+		<label>Stringa3:</label>
+		<br/>
+		<input type="text" name="str3" value=""/>
+		<br/>
+		<button type="button" onclick="checkInput(this.form)" value="Conta">Conta</button>
+		<br/>		
+	</form>
+	<h2>Risultato:</h2>
+	<br/>
+	<div id="risultato">
+	
+	</div>
+</body>
+
+</html>
