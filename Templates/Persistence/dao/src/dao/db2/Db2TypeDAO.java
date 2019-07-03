@@ -131,7 +131,7 @@ public class Db2TypeDAO implements #TypeDAO{
 		}
 
 	@Override
-	public #TypeDTO read(/* chiave per accedere al db */) {
+	public #TypeDTO read(int id) {
 		// --- 1. Dichiarazione della variabile per il risultato ---
 				#TypeDTO result = null;
 				// --- 2. Controlli preliminari sui dati in ingresso ---
@@ -219,7 +219,7 @@ public class Db2TypeDAO implements #TypeDAO{
 	}
 
 	@Override
-	public boolean delete(/* chiave per accedere al db */) {
+	public boolean delete(int id) {
 		// --- 1. Dichiarazione della variabile per il risultato ---
 				boolean result = false;
 				// --- 2. Controlli preliminari sui dati in ingresso ---
