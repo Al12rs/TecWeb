@@ -2,7 +2,7 @@ package jdbc.db;
 
 import java.sql.*;
 
-import jdbc.db2.PersistenceException;
+import javax.persistence.PersistenceException;
 
 public class DataSource {
 	

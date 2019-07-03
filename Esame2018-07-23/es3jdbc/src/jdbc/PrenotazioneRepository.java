@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import jdbc.db.PersistenceException;
+import javax.persistence.PersistenceException;
 
-import jdbc.db.DataSource;
+import Resturant.db.DataSource;
 
 public class PrenotazioneRepository {
 	private DataSource dataSource;

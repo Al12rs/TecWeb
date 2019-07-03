@@ -2,9 +2,9 @@ package jdbc;
 
 import java.sql.*;
 
-import jdbc.db.PersistenceException;
+import Resturant.db.PersistenceException;
 
-import jdbc.db.DataSource;
+import Resturant.db.DataSource;
 
 public class TypeRepository {
     private DataSource dataSource;
@@ -34,11 +34,6 @@ public class TypeRepository {
     static String update = "UPDATE " + TABLE + " " + "SET " + #NOME + " = ?, " + #CAPIENZA + " = ? " + "WHERE " + ID
             + " = ? ";
 
-
-    // READ FROM TABLE WHERE idcolumn=?
-    private static String read_by_id = "SELECT * FROM " + TABLE + " WHERE " + ID + "=? ";
-
-    private static String read_all = "SELECT * FROM " + TABLE;
     // -------------------------------------------------------------------------------------
 
     // create table
@@ -216,81 +211,6 @@ public class TypeRepository {
                 throw new PersistenceException(e.getMessage());
             }
         }
-    }
-
-    public #type readById(int id) throws PersistenceException {
-        #type result = new #type();
-        Connection connection = null;
-        PreparedStatement statement = null;
-        try {
-            connection = this.dataSource.getConnection();
-            statement = connection.prepareStatement(read_by_id);
-            statement.setInt(1, id);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                //CHANGE ME!
-                result.setId(rs.getInt(ID));
-                result.setNome(rs.getString(NOME));
-                result.setRatingGradimento(rs.getInt(RATING));
-            }
-            //CHANGE ME!
-            Set<#ReferencedType> objects = (new #ReferencedTypeRepository(0)).readById(id);
-            result.setProdottiOfferti(objects);
-            //
-        } catch (SQLException e) {
-            throw new PersistenceException(e.getMessage());
-        } finally {
-            try {
-                if (statement != null)
-                    statement.close();
-                if (connection != null) {
-                    connection.close();
-                    connection = null;
-                }
-            } catch (SQLException e) {
-                throw new PersistenceException(e.getMessage());
-            }
-        }
-        return result;
-    }
-
-    public ArrayList<#type> readAll() throws PersistenceException {
-        ArrayList<#type> results = new ArrayList<#type>();
-        #type result;
-        Connection connection = null;
-        PreparedStatement statement = null;
-        try {
-            connection = this.dataSource.getConnection();
-            statement = connection.prepareStatement(read_by_id);
-            statement.setInt(1, id);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                //CHANGE ME!
-                result = new #type();
-                result.setId(rs.getInt(ID));
-                result.setNome(rs.getString(NOME));
-                result.setRatingGradimento(rs.getInt(RATING));
-                //CHANGE ME!
-                Set<#ReferencedType> objects = (new #ReferencedTypeRepository(0)).readById(id);
-                result.setProdottiOfferti(objects);
-                results.add(result);
-            }
-
-        } catch (SQLException e) {
-            throw new PersistenceException(e.getMessage());
-        } finally {
-            try {
-                if (statement != null)
-                    statement.close();
-                if (connection != null) {
-                    connection.close();
-                    connection = null;
-                }
-            } catch (SQLException e) {
-                throw new PersistenceException(e.getMessage());
-            }
-        }
-        return results;
     }
 
     public void delete(int id) throws PersistenceException {

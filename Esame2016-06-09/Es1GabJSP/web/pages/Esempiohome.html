@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>Home</title>
+    <script type="text/javascript" src="../scripts/utils.js"></script>
+    <script type="text/javascript" src="../scripts/ajax.js"></script>
+    <link rel="stylesheet" href="../styles/default.css" type="text/css" />
+</head>
+
+<body>
+    <form>
+        Inserisci il tipo di operazione:<br /><br />
+        <label>+ o -:</label><br />
+        <input type="text" name="operation" value="" /><br />
+        <label>Secondi di freshness:</label><br />
+        <input type="text" name="freshnessSec" value="" /><br />
+        <input type="button" value="Calculate" id="calculateButton" onclick="calcolaMatrice(this.form.operation.value, this.form.freeshnessSec.value)" />
+    </form>
+    <br/>
+    <br/>
+    <label>Risultato:</label>
+    <div name="risultato" id="risultato">
+        
+    </div>
+</body>
+
+</html>
