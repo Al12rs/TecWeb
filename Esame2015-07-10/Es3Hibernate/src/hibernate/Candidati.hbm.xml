@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="it.unibo.tw.hibernate.Candidato" table="candidati">
+        <id name="candidatoId" column="candidatoId" />
+        <property name="matricolaCandidato" column="matricolaCandidato" unique="true" not-null="true" />
+        <property name="nome" column="nome" not-null="true"/>
+        <property name="cognome" column="cognome" not-null="true"/>
+        <set name="concorsi" table="candidati_concorsi" inverse="true">
+            <key>
+                <column name="candidatoIdFkInMapping" />
+            </key>
+            <many-to-many column="concorsoId" class="hibernate.Concorso" />
+        </set>
+    </class>
+</hibernate-mapping>

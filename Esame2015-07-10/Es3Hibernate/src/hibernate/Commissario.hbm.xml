@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="it.unibo.tw.hibernate.Commissario" table="commissari">
+        <id name="commissarioId" column="commissarioId" />
+        <property name="matricolaCommissario" column="matricolaCommissario" unique="true" not-null="true" />
+        <property name="nome" column="nome" />
+        <property name="cognome" column="cognome" />
+        <many-to-one name="concorso" class="hibernate.Concorso" fetch="select">
+            <column name="concorsoFk" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

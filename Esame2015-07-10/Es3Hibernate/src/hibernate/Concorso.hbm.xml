@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="it.unibo.tw.hibernate.Concorso" table="concorsi">
+        <!--Chiave surrogata con ID-->
+        <id name="concorsoId" column="concorsoId" />
+        <property name="codiceConcorso" column="codiceConcorso" unique="true" not-null="true" />
+        <property name="classeConcorso" column="classeConcorso" not-null="true" />
+        <property name="descrizione" column="descrizione" not-null="true"/>
+        
+        <set name="commissari" table="commissari" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="concorsoFkInCommissari" not-null="false" />
+            </key>
+            <one-to-many class="hibernate.Commissario" />
+        </set>
+        
+        <set name="candidati" table="candidati_concorsi" inverse="false" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="concorsoFkInMapping" not-null="false" />
+            </key>
+            <many-to-many column="candidatoId" class="hibernate.Candidato" />
+        </set>
+    </class>
+</hibernate-mapping>

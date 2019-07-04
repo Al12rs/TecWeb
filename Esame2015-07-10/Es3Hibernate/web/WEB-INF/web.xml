@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     version="2.4">
 
-    <display-name>Template</display-name>
+    <display-name>Esame</display-name>
     <description>
-      An empty project to use as a template for your own ones
+      esame
     </description>
 
 	<!-- Context attributes to be used throughout the application -->
@@ -16,22 +16,15 @@
 		<param-value>IDENTIFICATIVO_DELL_IMPLEMENTAZIONE</param-value>
 	</context-param>
 	
-	
-	<!--Set session inactivity timeout in minutes,
-	in alternative use this java code:
-	
-	HttpSession session = request.getSession();
-	//uses seconds
-	session.setMaxInactiveInterval(20*60);
-	
-	-->
-	<!--
-	<session-config>
-		<session-timeout>10</session-timeout>
-	</session-config>
-	-->
-	
     <!-- Define servlets that are included in the application -->
+
+	<!-- Welcome pages -->
+	<!-- pleonastico: tomcat "tenta" in automatico le index.html e index.jsp -->
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>servlets.LoginServlet</servlet-class>
@@ -44,13 +37,21 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/loginservlet</url-pattern>
 	</servlet-mapping>
-
-	<!-- Welcome pages -->
-	<!-- pleonastico: tomcat "tenta" in automatico le index.html e index.jsp -->
 	
-	<welcome-file-list>
-		<welcome-file>pages/login.html</welcome-file>
-	</welcome-file-list>
+	<!--Set session inactivity timeout in minutes,
+	in alternative use this java code:
+	
+	HttpSession session = request.getSession();
+	//uses seconds
+	session.setMaxInactiveInterval(20*60);
+	
+	-->
+	
+	<!--
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+	-->
 		
 	<!-- Handle exceptions and errors -->
 	

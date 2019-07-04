@@ -11,10 +11,12 @@
         <property name="indirizzo" column="indirizzo" />
 
         
-        <set name="tipiAccertamento" table="tipoAccertamento_ospedale" inverse="true" >
+        <set name="tipiAccertamento" table="tipoAccertamento_ospedale" inverse="true" cascade="all" >
             <key>
-                <column name="ospIdFK" />
+                <!-- nome della colonna foreign key sulla tabella esterna (in questo caso di mapping) (metti ID della tebella corrente)-->
+                <column name="ospId" />
             </key>
+            <!-- in column metti il nome la chiave primaria della tabella esterna -->
             <many-to-many column="tipoAccId" class="hibernate.TipoAccertamento" />
         </set>
         

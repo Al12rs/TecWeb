@@ -9,6 +9,7 @@
         <property name="nome" column="nome" />
         <property name="descrizione" column="descrizione" />
         <many-to-one name="tipoAccertamento" class="hibernate.TipoAccertamento" fetch="select" >
+            <!--Qui ci va il nome della colonna foreignKey da aggiungere alla tabella corrente -->
             <column name="tipoAccIdFKAcc" not-null="true" />
         </many-to-one>
     </class>

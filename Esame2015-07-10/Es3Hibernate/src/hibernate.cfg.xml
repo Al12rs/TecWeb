@@ -15,15 +15,12 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
 
-    <!-- Se è richiesta la creazione delle tabelle, Hibernate permette la popolazione 
-    automatica tramite la proprietà: -->
-    <!--
+    <!--Creazione automatica delle tabelle.-->
     <property name="hibernate.hbm2ddl.auto">create</property>
-    -->
     
     <!--ADD HERE ALL HIBERNATE XML FILES -->
-    <mapping resource="hibernate/Accertamento.hbm.xml" />
-    <mapping resource="hibernate/Ospedale.hbm.xml" />
-    <mapping resource="hibernate/TipoAccertamento.hbm.xml" />
+    <mapping resource="hibernate/Commissario.hbm.xml" />
+    <mapping resource="hibernate/Candidato.hbm.xml" />
+    <mapping resource="hibernate/Concorso.hbm.xml" />
   </session-factory>
 </hibernate-configuration>

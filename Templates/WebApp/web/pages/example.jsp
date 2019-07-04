@@ -3,37 +3,48 @@
 <%@ page import="java.util.*"%>
 <html>
     <head>
-		<title>Home</title>
+		<title>Start</title>
         <link type="text/css" href="styles/default.css" rel="stylesheet"></link>
         <script>
-            function sendMsg(input){
-                var value = this.value;
-                if (value.charAt(value.length - 1) != '@'){
-                    return;
-                } 
-                this.value = value.toLowerCase();
-                input.form.submit();
+            function validate(value){
+                if(value.length != 1 && !( (value > '0' && value < '9') || (value > 'a' && value < 'z')) ){
+                    return false;
+                }
+                return true;
             }
         </script>
-        <jsp:useBean id="msgToReturn" class="beans.MsgList" scope="session"/>
     </head>
     <body>
 
-    <div id="msgBoard">
-        <% 
+    <legend>File filter:</legend>
+	<form name="filter" action="/dispatcher" method="post" onsubmit="return validate(this.character.value)">
+	    <label for="file">file name</label>
+		<input type="text" name="file" placeholder="filename" required>
+		<br />
+		<label for="character">character</label>
+		<input type="text" name="character" placeholder="c" required>
+		<br />
+		<input type="submit" value="filter">
+	</form>
+
+    <div id="result">
+        <%  
+            HashMap<String, ResultInfo> resultMap = (HashMap<String, ResultInfo>)application.getAttribute("resultMap");
+            ResultInfo currentUserResults = resultMap.get(session.getId());
             ArrayList<String> messages = msgToReturn.getMsgList();
-            for (String msg : messages ){
-                //html code:
-                %><p><%= msg%></p><%
+            if (currentUserResults != null) {
+                ResultInfo[] results = currentUserResults.getResults();
+                for (int i =0; i<3; i++){
+                    if(results[i] > 0){
+                    %>
+                    <p> Result: <%= results[i]%></p>
+                    <%
+                    }
+                }
             }
         %>
 
     </div>
-
-    <form method="post" action="../msgmod">
-        New message (press @ to send):<br/>
-        <input type="text" name="msgInput" value="" onkeyup="sendMsg(this)" />
-    </form>
 
     </body>
 </html>

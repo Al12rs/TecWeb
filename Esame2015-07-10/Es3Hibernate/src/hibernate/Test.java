@@ -16,8 +16,8 @@ public class Test {
         Transaction tx = null;
 
         // Creazione delle tabelle da codice java se richieste (Hibernate ha opzione di
-        // crearle da solo) con:
-        // <property name="hibernate.hbm2ddl.auto">create</property>
+        // crearle da solo) con per esempio:
+        // <property name="hibernate.hbm2ddl.auto">create-drop</property>
         /*
         String sql;
         try {
@@ -80,72 +80,68 @@ public class Test {
             // Popola tabelle:
             tx = session.beginTransaction();
 
-            TipoAccertamento ta = new TipoAccertamento(1, 1, "lab");
-            Set<Accertamento> setAcc = new HashSet<Accertamento>();
+            Concorso con1 = new Concorso(1, 1, "class2", "cucina");
+            Concorso con2 = new Concorso(2, 2, "class3", "lettere");
 
-            session.persist(ta);
+            Commissario comm1 = new Commissario(1, "1", "paolo", "villaggio", con1);
+            Commissario comm2 = new Commissario(2, "2", "paolo2", "villaggio2", con1);
+            Commissario comm3 = new Commissario(3, "X0034", "paolo3", "villaggio3", con2);
+            Set<Commissario> commissari = new HashSet<Commissario>();
+            commissari.add(comm1);
+            commissari.add(comm2);
 
-            Accertamento acc = new Accertamento(1, 1, "prelDomi", "controllo san", ta);
-            setAcc.add(acc);
+            Candidato can1 = new Candidato(1, "1", "berto", "spada");
+            Candidato can2 = new Candidato(2, "2", "berto2", "spada2");
+            Candidato can3 = new Candidato(3, "3", "berto3", "spada3");
 
-            session.persist(acc);
+            Set<Concorso> concorsi = new HashSet<Concorso>();
+            concorsi.add(con1);
+            concorsi.add(con2);
 
-            acc = new Accertamento(2, 2, "altro", "testa", ta);
-            setAcc.add(acc);
+            can1.setConcorsi(concorsi);
+            can2.setConcorsi(concorsi);
+            Set<Concorso> concorsi2 = new HashSet<Concorso>();
+            concorsi2.add(con2);
+            can3.setConcorsi(concorsi2);
 
-            session.persist(acc);
+            session.persist(comm1);
+            session.persist(comm2);
+            session.persist(comm3);
 
-            ta.setAccertamenti(setAcc);
-
-            Set<Ospedale> setOsp = new HashSet<Ospedale>();
-            Set<TipoAccertamento> setTipoAcc = new HashSet<TipoAccertamento>();
-            setTipoAcc.add(ta);
-
-            Ospedale osp = new Ospedale(1, 1, "S.Orsola", "Bologna", "Via Massarenti");
-            setOsp.add(osp);
-            osp.setTipiAccertamento(setTipoAcc);
-            session.persist(osp);
-
-            osp = new Ospedale(2, 2, "ospEx", "city", "add");
-            session.persist(osp);
-
-            ta.setOspedali(setOsp);
-            session.saveOrUpdate(ta);
-
+            session.persist(can1);
+            session.persist(can2);
+            session.persist(can3);
             tx.commit();
-            // Fine popolazion
+            
+            //i concorsi sono popolati da soli grazie al cascade del database.
 
+            
             StringBuilder firstQueryResult = new StringBuilder();
 
             // Query1
             Query query = session.createQuery(
-                    "from " + Ospedale.class.getSimpleName() + " where nome = S.Orsola AND citta = Bologna");
-            List<Ospedale> ospedaliBologna = query.list();
-            if (ospedaliBologna.size() > 0) {
-                for (TipoAccertamento tipoAcc : ospedaliBologna.get(0).getTipiAccertamento()) {
-                    for (Accertamento accert : tipoAcc.getAccertamenti()) {
-                        firstQueryResult.append(", " + accert.getNome());
-                    }
-                }
+                    "from " + Commissario.class.getSimpleName() + " where matricolaCommissario = X0034 ");
+            List<Commissario> commissariResult = (List<Commissario>)query.list();
+            if (commissariResult.size() > 0) {
+                Concorso concorsoCorr = commissariResult.get(0).getConcorso();
+                firstQueryResult.append("Classe Concorso: "+concorsoCorr.getClasseConcorso()+" Num Cand: "+ 
+                concorsoCorr.getCandidati().size());
             }
 
             // Query2
-            query = session.createQuery("from " + Ospedale.class.getSimpleName());
-            List<Ospedale> allHosp = query.list();
+            query = session.createQuery("from " + Candidato.class.getSimpleName());
+            List<Candidato> allCand = query.list();
 
             StringBuilder secondQueryResult = new StringBuilder();
-            for (Ospedale hosp : allHosp) {
+            for (Candidato currentCand : allCand) {
 
-                int numAcc = 0;
-                for (TipoAccertamento tipoAcc : hosp.getTipiAccertamento()) {
-                    numAcc += tipoAcc.getAccertamenti().size();
+                if (currentCand.getConcorsi().size() > 1){
+                    secondQueryResult.append("Nome: " + currentCand.getNome()+" Cognome: "+currentCand.getCognome()+"\n");
                 }
-                secondQueryResult.append("\n" + hosp.getNome() + ", " + hosp.getCitta() + ", " + hosp.getIndirizzo()
-                        + ", numero Acc:" + numAcc);
             }
 
             // print Results to file
-            PrintWriter pw = new PrintWriter(new FileWriter("Ospedali.txt"));
+            PrintWriter pw = new PrintWriter(new FileWriter("concorso.txt"));
             pw.println(firstQueryResult);
             pw.append(secondQueryResult);
             pw.close();
