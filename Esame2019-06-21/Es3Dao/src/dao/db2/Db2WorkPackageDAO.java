@@ -7,15 +7,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.*;
 
 
-public class Db2TypeDAO implements #TypeDAO{
+public class Db2WorkPackageDAO implements WorkPackageDAO{
 	
-	static final String TABLE = "#nomeTabella";
+	static final String TABLE = "wp";
 	
-	//Se relazione molti-a-uno aggiungi un id per la FK
-	static final String ID = "id";
-	static final String CAMPO = "campo";
+	static final String ID = "workPackageId";
+    static final String NOME = "nomeWP";
+	static final String TITOLO = "titolo";
+    static final String DESCRIZIONE = "descrizione";
+    
 	//altri campi...
 	
 	// == STATEMENT SQL ====================================================================
@@ -24,9 +27,10 @@ public class Db2TypeDAO implements #TypeDAO{
 		static final String insert = 
 			"INSERT " +
 				"INTO " + TABLE + " ( " + 
-					ID +", "+CAMPO+" " +
+                    ID + ", " + NOME + ", " + TITOLO + ", " + DESCRIZIONE + 
+                    " " +
 				") " +
-				"VALUES (?,?) "
+				"VALUES (?,?,?,?) "
 			;
 		
 		// SELECT * FROM table WHERE idcolumn = ?;
@@ -36,21 +40,12 @@ public class Db2TypeDAO implements #TypeDAO{
 				"WHERE " + ID + " = ? "
 			;
 		
-		
 		// SELECT * FROM table WHERE idcolumn = ?;
 				static String read_by_name = 
 					"SELECT * " +
 						"FROM " + TABLE + " " +
-						"WHERE " + CAMPO + " = ? "
+						"WHERE " + NOME + " = ? "
 					;
-
-		// SELECT * FROM table WHERE FK = ?;
-		static String read_by_fk = 
-			"SELECT * " +
-				"FROM " + TABLE + " " +
-				"WHERE " + #FK + " = ? "
-			;
-		
 
 		// SELECT * FROM table WHERE stringcolumn = ?;
 		static String read_all = 
@@ -68,7 +63,9 @@ public class Db2TypeDAO implements #TypeDAO{
 		static String update = 
 			"UPDATE " + TABLE + " " +
 				"SET " + 
-				CAMPO + " = ?, " +
+                    NOME + " = ?, " +
+                    TITOLO + " = ?, " +
+                    DESCRIZIONE + " = ?, " +
 				"WHERE " + ID + " = ? "
 			;
 
@@ -84,14 +81,14 @@ public class Db2TypeDAO implements #TypeDAO{
 		static String create = 
 			"CREATE " +
 				"TABLE " + TABLE +" ( " +
-					ID + " INT NOT NULL PRIMARY KEY " +
-					","+CAMPO + " VARCHAR(50) NOT NULL UNIQUE " +
+					ID + " INT NOT NULL PRIMARY KEY, " +
+                    NOME + " VARCHAR(50) NOT NULL UNIQUE, " +
+                    TITOLO + " VARCHAR(50) NOT NULL , " + 
+                    DESCRIZIONE + " VARCHAR(50) NOT NULL  " +
+                    
 				") "
 			;
-			//for fks:
-			//id_citta INT NOT NULL REFERENCES citta(id)
-
-
+		
 		static String drop = 
 			"DROP " +
 				"TABLE " + TABLE + " "
@@ -103,7 +100,7 @@ public class Db2TypeDAO implements #TypeDAO{
 	// METODI CRUD
 
 	@Override
-	public void create(#TypeDTO oggetto) {
+	public void create(WorkPackageDTO oggetto) {
 		// --- 1. Dichiarazione della variabile per il risultato ---
 				//Long result = new Long(-1);
 				// --- 2. Controlli preliminari sui dati in ingresso ---
@@ -116,11 +113,15 @@ public class Db2TypeDAO implements #TypeDAO{
 				// --- 4. Tentativo di accesso al db e impostazione del risultato ---
 				try {
 					// --- a. Crea (se senza parametri) o prepara (se con parametri) lo statement
-					PreparedStatement prep_stmt = conn.prepareStatement(Db2#TypeDAO.insert);
+					PreparedStatement prep_stmt = conn.prepareStatement(Db2WorkPackageDAO.insert);
 					// --- b. Pulisci e imposta i parametri (se ve ne sono)
-					prep_stmt.clearParameters();
-					prep_stmt.setInt(1, #oggetto.getId());
-					prep_stmt.setString(2, #oggetto.getField());
+                    prep_stmt.clearParameters();
+                    
+					prep_stmt.setInt(1, oggetto.getWorkPackageId());
+                    prep_stmt.setString(2, oggetto.getNomeWP());
+		    	    prep_stmt.setString(3, oggetto.getTitolo()));
+                    prep_stmt.setString(4, oggetto.getDescrizione());
+                    
 					// --- c. Esegui l'azione sul database ed estrai il risultato (se atteso)
 					prep_stmt.executeUpdate();
 					// --- d. Cicla sul risultato (se presente) pe accedere ai valori di ogni sua tupla
@@ -144,9 +145,9 @@ public class Db2TypeDAO implements #TypeDAO{
 		}
 
 	@Override
-	public #TypeDTO read(int id) {
+	public WorkPackageDTO read(int id) {
 		// --- 1. Dichiarazione della variabile per il risultato ---
-				#TypeDTO result = null;
+				WorkPackageDTO result = null;
 				// --- 2. Controlli preliminari sui dati in ingresso ---
 				/*if ( chiave.isEmpty() || chiave == null )  {
 					
@@ -157,7 +158,7 @@ public class Db2TypeDAO implements #TypeDAO{
 				// --- 4. Tentativo di accesso al db e impostazione del risultato ---
 				try {
 					// --- a. Crea (se senza parametri) o prepara (se con parametri) lo statement
-					PreparedStatement prep_stmt = conn.prepareStatement(Db2#TypeDAO.read_by_id);
+					PreparedStatement prep_stmt = conn.prepareStatement(Db2WorkPackageDAO.read_by_id);
 					// --- b. Pulisci e imposta i parametri (se ve ne sono)
 					prep_stmt.clearParameters();
 					prep_stmt.setInt(1, id);
@@ -165,9 +166,12 @@ public class Db2TypeDAO implements #TypeDAO{
 					ResultSet rs = prep_stmt.executeQuery();
 					// --- d. Cicla sul risultato (se presente) pe accedere ai valori di ogni sua tupla
 					if ( rs.next() ) {
-						#TypeDTO entry = new Db2#TypeDTOProxy();
-						entry.setId(rs.getInt(ID));
-						entry.setCampo(rs.getString(CAMPO));
+						WorkPackageDTO entry = new Db2WorkPackageDTOProxy();
+						entry.setWorkPackageId(rs.getInt(ID));
+                entry.setNomeWP(rs.getString(NOME));
+						entry.setTitolo(rs.getString(TITOLO));
+                entry.setDescrizione(rs.getString(DESCRIZIONE));
+                        
 						result = entry;
 					}
 					// --- e. Rilascia la struttura dati del risultato
@@ -189,11 +193,11 @@ public class Db2TypeDAO implements #TypeDAO{
 	}
 
 	@Override
-	public boolean update(#TypeDTO oggetto) {
+	public boolean update(WorkPackageDTO oggetto) {
 		// --- 1. Dichiarazione della variabile per il risultato ---
 		boolean result = false;
 		// --- 2. Controlli preliminari sui dati in ingresso ---
-		if ( oggetto== null )  {
+		if ( oggetto == null )  {
 			
 			return result;
 		}
@@ -202,12 +206,15 @@ public class Db2TypeDAO implements #TypeDAO{
 		// --- 4. Tentativo di accesso al db e impostazione del risultato ---
 		try {
 			// --- a. Crea (se senza parametri) o prepara (se con parametri) lo statement
-			PreparedStatement prep_stmt = conn.prepareStatement(Db2#TypeDAO.update);
+			PreparedStatement prep_stmt = conn.prepareStatement(Db2WorkPackageDAO.update);
 			// --- b. Pulisci e imposta i parametri (se ve ne sono)
 			prep_stmt.clearParameters();
 			
-			prep_stmt.setString(1, #oggetto.getCampo());
-			prep_stmt.setInt(/*ultimo campo*/, #oggetto.getId());
+            prep_stmt.setString(1, oggetto.getNomeWP());
+			prep_stmt.setString(2, oggetto.getTitolo());
+			prep_stmt.setString(3, oggetto.getDescrizione());
+            
+			prep_stmt.setInt(4, oggetto.getWorkPackageId());
 			// --- c. Esegui l'azione sul database ed estrai il risultato (se atteso)
 			prep_stmt.executeUpdate();
 			// --- d. Cicla sul risultato (se presente) pe accedere ai valori di ogni sua tupla
@@ -245,7 +252,7 @@ public class Db2TypeDAO implements #TypeDAO{
 				// --- 4. Tentativo di accesso al db e impostazione del risultato ---
 				try {
 					// --- a. Crea (se senza parametri) o prepara (se con parametri) lo statement
-					PreparedStatement prep_stmt = conn.prepareStatement(Db2#TypeDAO.delete);
+					PreparedStatement prep_stmt = conn.prepareStatement(Db2WorkPackageDAO.delete);
 					// --- b. Pulisci e imposta i parametri (se ve ne sono)
 					prep_stmt.clearParameters();
 					prep_stmt.setInt(1, id);

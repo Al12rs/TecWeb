@@ -1,4 +1,4 @@
-package esame.dao.db2;
+package dao.db2;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

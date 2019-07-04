@@ -63,7 +63,7 @@ public class DAOgenerator
 				fstream = new FileWriter(objNameDAO+".java");
 				out = new BufferedWriter(fstream);
 
-				out.write("package esame.dao;\n\n");
+				out.write("package dao;\n\n");
 				out.write("public interface "+objNameDAO+"\n{\n");
 				out.write("\t//CRUD\n");
 				out.write("\tpublic void create("+objName+" obj);\n");
@@ -81,7 +81,7 @@ public class DAOgenerator
 				fstream = new FileWriter(objName+".java");
 				out = new BufferedWriter(fstream);
 
-				out.write("package esame.dao;\n\n");
+				out.write("package dao;\n\n");
 				out.write("import java.io.Serializable;\n\n");
 				out.write("public class "+objName+" implements Serializable {\n");
 				out.write("\tprivate static final long serialVersionUID = 1L;\n");

@@ -78,42 +78,52 @@ public class Test {
         try {
 
             // Popola tabelle:
+
+            TipoAccertamento b1 = new TipoAccertamento(1, 1, "lab");
+            TipoAccertamento b2 = new TipoAccertamento(2, 2, "lab2");
+            
+            Accertamento a1 = new Accertamento(1, 1, "prelDomi", "controllo san");
+            Accertamento a2 = new Accertamento(2, 2, "prelDomi", "controllo san");
+            Accertamento a3 = new Accertamento(3, 2, "prelDomi", "controllo san");
+
+            Set<Accertamento> setA1 = new HashSet<Accertamento>();
+            Set<Accertamento> setA2 = new HashSet<Accertamento>();
+
+            setA1.add(a1);
+            setA1.add(a2);
+
+            setA2.add(a3);
+
+            b1.setAccertamenti(setA1);
+            b2.setAccertamenti(setA2);
+
+            Ospedale c1 = new Ospedale(1, 1, "ospEx", "city", "add");
+            Ospedale c2 = new Ospedale(2, 2, "ospEx", "city", "add");
+            Ospedale c3 = new Ospedale(3, 3, "ospEx", "city", "add");
+
+            Set<Ospedale> setC1 = new HashSet<Ospedale>();
+            Set<Ospedale> setC2 = new HashSet<Ospedale>();
+
+            setC1.add(c1);
+            setC1.add(c2);
+
+            setA2.add(c3);
+
+            b1.setOspedali(setC1);
+            b2.setOspedali(setC2);
+
+            b1.setOspedali(setC1);
+
+            //inizia transazione
             tx = session.beginTransaction();
 
-            TipoAccertamento ta = new TipoAccertamento(1, 1, "lab");
-            Set<Accertamento> setAcc = new HashSet<Accertamento>();
+            //Con cascading si popolano tutte le tabelle.
+            session.persist(b1);
+            session.persist(b2);
 
-            session.persist(ta);
-
-            Accertamento acc = new Accertamento(1, 1, "prelDomi", "controllo san", ta);
-            setAcc.add(acc);
-
-            session.persist(acc);
-
-            acc = new Accertamento(2, 2, "altro", "testa", ta);
-            setAcc.add(acc);
-
-            session.persist(acc);
-
-            ta.setAccertamenti(setAcc);
-
-            Set<Ospedale> setOsp = new HashSet<Ospedale>();
-            Set<TipoAccertamento> setTipoAcc = new HashSet<TipoAccertamento>();
-            setTipoAcc.add(ta);
-
-            Ospedale osp = new Ospedale(1, 1, "S.Orsola", "Bologna", "Via Massarenti");
-            setOsp.add(osp);
-            osp.setTipiAccertamento(setTipoAcc);
-            session.persist(osp);
-
-            osp = new Ospedale(2, 2, "ospEx", "city", "add");
-            session.persist(osp);
-
-            ta.setOspedali(setOsp);
-            session.saveOrUpdate(ta);
 
             tx.commit();
-            // Fine popolazion
+            // Fine popolazione
 
             StringBuilder firstQueryResult = new StringBuilder();
 

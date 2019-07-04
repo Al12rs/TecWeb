@@ -13,7 +13,6 @@ public class Db2TypeDAO implements #TypeDAO{
 	
 	static final String TABLE = "#nomeTabella";
 	
-	//Se relazione molti-a-uno aggiungi un id per la FK
 	static final String ID = "id";
 	static final String CAMPO = "campo";
 	//altri campi...
@@ -35,14 +34,6 @@ public class Db2TypeDAO implements #TypeDAO{
 				"FROM " + TABLE + " " +
 				"WHERE " + ID + " = ? "
 			;
-		
-		
-		// SELECT * FROM table WHERE idcolumn = ?;
-				static String read_by_name = 
-					"SELECT * " +
-						"FROM " + TABLE + " " +
-						"WHERE " + CAMPO + " = ? "
-					;
 
 		// SELECT * FROM table WHERE FK = ?;
 		static String read_by_fk = 
@@ -51,6 +42,12 @@ public class Db2TypeDAO implements #TypeDAO{
 				"WHERE " + #FK + " = ? "
 			;
 		
+		// SELECT * FROM table WHERE idcolumn = ?;
+				static String read_by_name = 
+					"SELECT * " +
+						"FROM " + TABLE + " " +
+						"WHERE " + CAMPO + " = ? "
+					;
 
 		// SELECT * FROM table WHERE stringcolumn = ?;
 		static String read_all = 
@@ -84,14 +81,11 @@ public class Db2TypeDAO implements #TypeDAO{
 		static String create = 
 			"CREATE " +
 				"TABLE " + TABLE +" ( " +
-					ID + " INT NOT NULL PRIMARY KEY " +
-					","+CAMPO + " VARCHAR(50) NOT NULL UNIQUE " +
+					ID + " INT NOT NULL PRIMARY KEY, " +
+					CAMPO + " VARCHAR(50) NOT NULL UNIQUE " +
 				") "
 			;
-			//for fks:
-			//id_citta INT NOT NULL REFERENCES citta(id)
-
-
+		
 		static String drop = 
 			"DROP " +
 				"TABLE " + TABLE + " "
@@ -103,7 +97,7 @@ public class Db2TypeDAO implements #TypeDAO{
 	// METODI CRUD
 
 	@Override
-	public void create(#TypeDTO oggetto) {
+	public void create(#TypeDTO #oggetto) {
 		// --- 1. Dichiarazione della variabile per il risultato ---
 				//Long result = new Long(-1);
 				// --- 2. Controlli preliminari sui dati in ingresso ---
@@ -188,12 +182,14 @@ public class Db2TypeDAO implements #TypeDAO{
 				return result;
 	}
 
+
+
 	@Override
-	public boolean update(#TypeDTO oggetto) {
+	public boolean update(#TypeDTO #oggetto) {
 		// --- 1. Dichiarazione della variabile per il risultato ---
 		boolean result = false;
 		// --- 2. Controlli preliminari sui dati in ingresso ---
-		if ( oggetto== null )  {
+		if ( r== null )  {
 			
 			return result;
 		}

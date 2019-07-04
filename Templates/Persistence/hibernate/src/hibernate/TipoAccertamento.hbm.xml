@@ -9,7 +9,7 @@
         <property name="codiceTipoAccertamento" column="codiceTipoAccertamento" unique="true" not-null="true" />
         <property name="descrizione" column="descrizione" />
         
-        <set name="accertamenti" table="accertamenti" inverse="true" lazy="true" fetch="select">
+        <set name="accertamenti" table="accertamenti" inverse="true" lazy="true" fetch="select" cascade="all">
             <key>
                 <!-- nome della colonna foreign key sulla tabella esterna-->
                 <column name="tipoAccId" not-null="false" />
@@ -20,7 +20,7 @@
         <set name="ospedali" table="tipoAccertamento_ospedale" inverse="false" lazy="true" fetch="select" cascade="all">
             <key>
                 <!-- nome della colonna foreign key sulla tabella esterna (in questo caso di mapping) (metti ID della tebella corrente)-->
-                <column name="tipoAccId" not-null="false" />
+                <column name="tipoAccId" />
             </key>
             <!-- in column metti il nome la chiave primaria della tabella esterna -->
             <many-to-many column="ospId" class="hibernate.Ospedale" />

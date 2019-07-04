@@ -3,14 +3,14 @@ package dao;
 
 import java.util.List;
 
-public interface TypeDAO {
+public interface PartnerDAO {
 	
 	// --- CRUD -------------
-		public void create(#TypeDTO oggetto);
+		public void create(PartnerDTO oggetto);
 
-		public #TypeDTO read(int id);
+		public PartnerDTO read(int id);
 
-		public boolean update(#TypeDTO oggetto);
+		public boolean update(PartnerDTO oggetto);
 
 		public boolean delete(int id);
 		// ----------------------------------
