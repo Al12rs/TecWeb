@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <title>UCL Home</title>
+
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+
+    <!--<link type="text/css" href="styles/default.css" rel="stylesheet" />-->
+    <link type="text/css" href="styles/defaultUCL.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="scripts/utils.js"></script>
+    <script type="text/javascript" src="scripts/ucl.js"></script>
+</head>
+
+<body>
+
+    <div class="topBar">
+
+        <div class="topBarLeft">
+            <ul class="navMenu" id="navMenu" style="padding-top: 0.5%;">
+                <li><a href="/UCLHome.html" style="text-decoration: underline">UCL Home</a></li>
+                <li><a href="#">Prospective Students</a></li>
+                <li><a href="#">Current Students</a></li>
+                <li><a href="#">Staff</a></li>
+                <li class="backgorundYellow"><a href="#">Give</a></li>
+            </ul>
+        </div>
+
+        <div class="topBarRight">
+            <div class="searchbar">
+                <input class="searchInput" id="searchStr" type="text" placeholder="Search UCL websites, degrees, short"
+                    onkeyup="checkString(this);"> </input>
+                <input type="image" class="searchImg" src="images/searchImg.png">
+            </div>
+
+            <input type="button" id="searchButton" value="Go" />
+
+
+        </div>
+
+    </div><!-- topBar end -->
+
+    <div class="blackHeader">
+        <h5>LONDON'S GLOBAL UNIVERSITY</h5>
+        <!--vabbè sarebbe un barra nera col logo trasparente con sotto una altra immagine-->
+        <!--close enough...-->
+        <img id="transparentLogo" src="images/fakeTransparentLogo.jpg"/>
+    </div>
+
+    <div class="leftSidebar">
+        <h2>Explore UCL</h2>
+        <dl>
+            <dt><a href="#">Prospective Students</a></dt>
+            <dd>bla bla bla</dd>
+            <dt><a href="#">Current Students</a></dt>
+            <dd>bla bla bla</dd>
+            <dt><a href="#">Staff</a></dt>
+            <dd>bla bla bla</dd>
+            <dt><a href="#">Alumni</a></dt>
+            <dd>bla bla bla</dd>
+            <dt><a href="#">Research and Collaboration</a></dt>
+            <dd>bla bla bla</dd>
+            <dt><a href="#">About UCL</a></dt>
+            <dd>bla bla bla</dd>
+        </dl>
+    </div>
+
+    <div class="rightSideBar">
+        <h2>Study at UCL</h2>
+        <dl>
+            <dt><a href="#">Undergraduate</a></dt>
+            <dd>e.g BA, BSc, LLB, MEng</dd>
+            <dt><a  href="#">Graduate</a></dt>
+            <dd>e.g MA, MSc, LLB, MEng</dd>
+            <dt><a  href="#">Life Learning</a></dt>
+            <dd>e.g BA, BSc, LLB, MEng</dd>
+        </dl>
+    </div>
+
+    <div id="newsSection">
+        <h2> <a href="#">News</a> and <a href="#">events</a> at UCL</h2>
+        <div id="newsContainer">
+            <div class="newsElement">
+                <div class="imageDiv" style="background-image: url('images/news1.jpg'); background-repeat: no-repeat;">
+                    <div class="overlap"><p>UCL News</p></div>
+                </div>
+                <h4><a href="#">Grant Museul of Zoology yada yada, bla bla and stuff</a></h4>
+                <p>This week [stuff], other stuff</p>
+            </div>
+            <div class="newsElement">
+                <div class="imageDiv" style="background-image: url('images/news1.jpg'); background-repeat: no-repeat;">
+                    <div class="overlap">
+                        <p>UCL Slade</p>
+                    </div>
+                </div>
+                <h4><a href="#">UCL Slade yada yada, bla bla and stuff</a></h4>
+                <p>This week [stuff], other stuff</p>
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+
+</html>

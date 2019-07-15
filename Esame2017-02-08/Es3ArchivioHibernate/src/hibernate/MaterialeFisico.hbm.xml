@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate.MaterialeFisico" table="materiali">
+        <!--Chiave surrogata con ID-->
+        <id name="idMaterialeFisico" column="idMaterialeFisico" />
+        <property name="codiceMateriale" column="codiceMateriale" unique="true" not-null="true" />
+        <property name="nome" column="nome" />
+        <property name="descrizione" column="descrizione" />
+        <property name="dataCreazione" column="dataCreazione" />
+        
+        <set name="oggetti" table="oggetti" inverse="false" lazy="true" fetch="select" cascade="all">
+            <key>
+                <!-- nome della colonna foreign key sulla tabella esterna-->
+                <column name="idMaterialeFisico" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.OggettoDigitale" />
+        </set>
+        
+        <many-to-one name="archivio" class="hibernate.ArchivioFisico" fetch="select" >
+            <!--Qui ci va il nome della colonna foreignKey da aggiungere alla tabella corrente -->
+            <column name="idArchivioFisico" not-null="false" />
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>

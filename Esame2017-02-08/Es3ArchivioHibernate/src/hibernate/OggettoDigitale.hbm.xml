@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate.OggettoDigitale" table="oggetti">
+        <!--Chiave surrogata con ID-->
+        <id name="idOggettoDigitale" column="idOggettoDigitale" />
+        <property name="codiceOggetto" column="codiceOggetto" unique="true" not-null="true" />
+        <property name="nome" column="nome" />
+        <property name="formato" column="formato" />
+        <property name="dataDigitalizzazione" column="dataDigitalizzazione" />
+        
+        <many-to-one name="materiale" class="hibernate.MaterialeFisico" fetch="select" >
+            <!--Qui ci va il nome della colonna foreignKey da aggiungere alla tabella corrente -->
+            <column name="idMaterialeFisico" not-null="true" />
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>

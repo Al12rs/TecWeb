@@ -1,0 +1,127 @@
+<html>
+
+<head>
+    <title>Springer</title>
+
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+
+    <!--<link type="text/css" href="styles/default.css" rel="stylesheet" />-->
+    <link type="text/css" href="styles/springer.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="scripts/utils.js"></script>
+    <script type="text/javascript" src="scripts/springer.js"></script>
+</head>
+
+<body>
+
+    <div class="topBar">
+
+        <div id="topBarLogo">
+            <a href="#"><img src="images/SpringerLogo.jpg" /></a>
+        </div>
+
+
+        <div id="topBarRight">
+            <!-- sarebbero dei dropdown ma pazienza -->
+            <a href="#" id="shoppingCart"><img src="images/shoppingCart.jpg" /></a>
+            <a href="#" id="login">Login/Register</a>
+            <a href="#" id="country">Italy</a>
+        </div>
+
+        <div id="searchbar">
+            <input class="searchInput" id="searchStr" type="text" placeholder="Search"> </input>
+            <input type="image" class="searchImg" src="images/searchImgBlue.jpg" onclick="checkString(document.getElementById('searchStr').value);">
+        </div>
+
+        <div id="horizontalMenu">
+            <ul class="navMenu" id="navMenu" style="padding-top: 0.5%;">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Subjects</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#" onclick="show(document.getElementById('leftSidebar'));">Products</a></li>
+                <li><a href="#">Springer Shop</a></li>
+                <li><a href="#">About us</a></li>
+            </ul>
+        </div>
+
+    </div><!-- topBar end -->
+
+    <div id="leftSidebar" style="visibility:hidden;">
+        <div id="leftSidebarTop">
+            <h2>Products</h2>
+            <ul>
+                <li><a href="#">Journals</a></li>
+                <li><a href="#" onclick="show(document.getElementById('mainSection'));">Books</a></li>
+                <li><a href="#">Proceedings</a></li>
+                <li><a href="#">SpringerLink</a></li>
+                <li><a href="#">Springer for R&D</a></li>
+                <li><a href="#">Springer for hospitals & health</a></li>
+                <li><a href="#">Databases and software</a></li>
+            </ul>
+        </div>
+
+        <div id="leftSidebarBottom">
+            <a href="#"> springernature</a>
+            <div id="bottomRightOrangeBadge">
+                Springer Nature for librarians
+            </div>
+        </div>
+    </div>    
+
+    <div id="mainSection" style="visibility:hidden;">
+        <h2> Springer Books</h2>
+        <p>
+            Books from Springer are an unparalled resource for scientific reasech.
+            The Springer collection delivers access to the lasgest singel database
+            onm the spusblisher histpry of databases and it's amazing , just amazing.
+        </p>
+        <ul>
+            <li>Close to 200000 books available in print an donline</li>
+            <li>Thousands of new reference matirial each year</li>
+        </ul>
+        <h2> Featured Books</h2>
+        <hr />
+        <div id="slider">
+            <div id="buttonSliderLeft" class="sliderButton">
+                <input type="image" src="images/sliderLeft.jpg" />
+            </div>
+
+            <div class="sliderBook">
+                <img src="images/book1.jpg" />
+                <p>
+                    <a href="#">Hasdasf Utility 4.0</a>
+
+                </p>
+            </div>
+            <div class="sliderBook">
+                <img src="images/book2.jpg" />
+                <p>
+                    <a href="#">Pattern Recog</a>
+
+                </p>
+            </div>
+            <div class="sliderBook">
+                <img src="images/book3.jpg" />
+                <p>
+                    <a href="#">Douchen buche und Evaluation</a>
+
+                </p>
+            </div>
+            <div class="sliderBook">
+                <img src="images/book4.jpg" />
+                <p>
+                    <a href="#">An introduction to Statistical</a>
+
+                </p>
+            </div>
+
+            <div id="buttonSliderRight" class="sliderButton">
+                <input type="image" src="images/sliderRight.jpg" />
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

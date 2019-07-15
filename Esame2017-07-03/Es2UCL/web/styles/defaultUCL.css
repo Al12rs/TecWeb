@@ -1,0 +1,232 @@
+/*@CHARSET "UTF-8";*/
+
+
+body {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 9pt;
+    height: 100%;
+    margin:0;
+    padding:0;
+
+    background-image: url('../images/bodyBackground.jpg');
+    background-size: 100% 30%;
+    background-repeat: no-repeat;
+}
+
+/*Top bar */
+.topBar {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(85, 83, 83);
+    margin: 0px;
+    padding: 0px;
+    /*line-height: 0px;*/
+}
+
+.topBarLeft{
+    float:left;
+    margin: 0px;
+    padding:0px;
+}
+
+.topBarRight {
+    float:right;
+    margin: 0px;
+    padding:0px;
+    width:40%;
+}
+
+.searchbar {
+    background: white;
+	height: 55%;
+    width: 82%;
+    display: inline-block;
+    margin-top: 7px;
+    /*This makes no sense but otherwise the button does not align.*/
+    vertical-align: -37%;
+}
+
+.searchInput{
+	height: 100%;
+	width: 80%;
+	border-width: 0px;
+    float: left;
+}
+
+.searchImg{
+	height: 100%;
+    width: 8%;
+    float:right;
+}
+
+
+#searchButton{
+    display: inline-block;
+    width: 10%;
+    height: 55%;
+    background-color: blue;
+    margin-left: 2%;
+    border-width: 0px;
+}
+
+.navMenu {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.navMenu li {
+    height: 100%;
+    margin-top: 10px;
+    float:left;
+    list-style: none;
+    padding-right: 5px;
+    padding-left: 0px;
+}
+
+li a {
+    text-decoration: none;
+    color: #FFFAF0;
+    padding-bottom: 29%;
+}
+/*End TopBar*/
+
+/*header*/
+.blackHeader{
+    background-color: black;
+    width: 100%;
+    height: 10%;
+    margin-top: 0px;
+    
+}
+
+.blackHeader h5{
+    color: white;
+    font-size: 1.25em;
+    padding-top: 20px;
+    padding-left: 30px;
+    text-align:left;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+#transparentLogo{
+    float: right;
+    margin-bottom: 0px;
+    height:40%;
+    width:40%;
+
+}
+/*End header*/
+
+/*left bar*/
+.leftSideBar{
+    float: left;
+    height: 100%;
+    width: 25%;
+    background-color: rgb(58, 58, 56);
+    margin-top: 4%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+    
+}
+
+.leftSideBar h2{
+    color:white;
+    font-size: 2em;
+    font-weight: normal;
+}
+
+.leftSideBar a {
+    font-size: 1.25em;
+    font-weight: bold;
+    color:yellow;
+    text-decoration: none;
+}
+
+.leftSideBar dd{
+    margin-left: 0px;
+    color: gray;
+}
+/*End leftbar*/
+
+/*right bar*/
+.rightSideBar{
+    clear:right;
+    float: right;
+    background-color: yellow;
+    margin-top: 4%;
+    margin-right: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.rightSideBar h2{
+    color: purple;
+    font-size: 2em;
+    font-weight: normal;
+}
+
+.rightSideBar a {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: blue;
+    text-decoration: none;
+}
+
+.rightSideBar dd{
+    margin-left: 0px;
+    color: darkblue;
+}
+/*End rightbar*/
+
+/*news section*/
+#newsSection {
+    vertical-align: bottom;
+    clear: right;
+    margin-left: 35%;
+    margin-top: 30%;
+}
+
+#newsSection a{
+    color: darkblue;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#newsSection h2{
+    color: black;
+    font-size: 2em;
+    font-weight: normal;
+}
+
+.imageDiv{
+    width: 100%;
+    height: 150px;  
+}
+
+.newsElement {
+    float:left;
+    width: 35%;
+    margin-right: 4%;
+}
+
+.newsElement a{
+    color: darkblue;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newsElement p{
+    font-size: 0.9em;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.overlap {
+    width:40%;
+    background-color: green;
+    color: white;
+}
+/*End news Section*/

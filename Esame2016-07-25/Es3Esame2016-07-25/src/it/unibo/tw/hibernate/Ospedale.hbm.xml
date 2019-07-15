@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="it.unibo.tw.hibernate.Ospedale" table="ospedali">
+    <id name="idOspedale" column="idOspedale" />
+    <property name="codiceOspedale" column="codiceOspedale" unique="true" not-null="true"/>
+    <property name="nome" column="nome"/>
+    <property name="citta" column="citta"/>
+    <property name="indirizzo" column="indirizzo"/>
+    
+    <set name="tipiAccertamento" table="tipoAccertamento_ospedale" inverse="true" >
+    	<key column="idOspedale"/>
+    	<many-to-many column="idTipoAccertamento" class="it.unibo.tw.hibernate.TipoAccertamento"/>
+    </set>
+    
+    
+	
+  </class>
+</hibernate-mapping>

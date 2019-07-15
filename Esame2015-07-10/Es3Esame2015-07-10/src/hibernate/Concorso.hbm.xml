@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate.Concorso" table="concorsi">
+        <!--Chiave surrogata con ID-->
+        <id name="codiceConcorso" column="codiceConcorso" />
+        <property name="classeConcorso" column="classeConcorso" />
+        <property name="descrizione" column="descrizione" />
+        
+        <set name="commissari" table="commissari" inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <!-- nome della colonna foreign key sulla tabella esterna-->
+                <column name="codiceConcorso" not-null="false" />
+            </key>
+            <one-to-many class="hibernate.Commissario" />
+        </set>
+        
+        <set name="candidati" table="concorsi_candidati" inverse="false" lazy="true" fetch="select" cascade="all">
+            <key>
+                <!-- nome della colonna foreign key sulla tabella esterna (in questo caso di mapping) (metti ID della tebella corrente)-->
+                <column name="codiceConcorso" not-null="false" />
+            </key>
+            <!-- in column metti il nome la chiave primaria della tabella esterna -->
+            <many-to-many column="matricola" class="hibernate.Candidato" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="it.unibo.tw.hibernate.Accertamento" table="accertamenti">
+    <id name="idAccertamento" column="idAccertamento" />
+    <property name="codiceAccertamento" column="codiceAccertamento" unique="true" not-null="true"/>
+    <property name="nome" column="nome"/>
+    <property name="descrizione" column="descrizione"/>
+    
+    <many-to-one name="tipoAccertamento" class="it.unibo.tw.hibernate.TipoAccertamento" fetch="select">
+    	<column name="idTipoAccertamento" not-null="true" />
+    </many-to-one>
+    
+	
+  </class>
+</hibernate-mapping>

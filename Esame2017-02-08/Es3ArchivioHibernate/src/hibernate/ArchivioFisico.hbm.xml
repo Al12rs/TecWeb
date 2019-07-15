@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate.ArchivioFisico" table="archivi">
+        <!--Chiave surrogata con ID-->
+        <id name="idArchivioFisico" column="idArchivioFisico" />
+        <property name="codiceArchivio" column="codiceArchivio" unique="true" not-null="true" />
+        <property name="nome" column="nome" />
+        <property name="descrizione" column="descrizione" />
+        <property name="dataCreazione" column="dataCreazione" />
+        
+        <set name="materiali" table="materiali" inverse="false" lazy="true" fetch="select" cascade="all">
+            <key>
+                <!-- nome della colonna foreign key sulla tabella esterna-->
+                <column name="idArchivioFisico" not-null="false" />
+            </key>
+            <one-to-many class="hibernate.MaterialeFisico" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

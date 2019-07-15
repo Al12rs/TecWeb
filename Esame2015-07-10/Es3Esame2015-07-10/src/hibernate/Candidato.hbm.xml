@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate.Candidato" table="candidati">
+        <id name="matricola" column="matricola" />
+        <property name="nome" column="nome" />
+        <property name="cognome" column="cognome" />
+
+        
+        <set name="concorsi" table="concorsi_candidati" inverse="true" cascade="all" >
+            <key>
+                <!-- nome della colonna foreign key sulla tabella esterna (in questo caso di mapping) (metti ID della tebella corrente)-->
+                <column name="matricola" />
+            </key>
+            <!-- in column metti il nome la chiave primaria della tabella esterna -->
+            <many-to-many column="codiceConcorso" class="hibernate.Concorso" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
