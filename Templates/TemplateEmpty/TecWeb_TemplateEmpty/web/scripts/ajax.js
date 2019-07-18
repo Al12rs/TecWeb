@@ -76,6 +76,9 @@ function ajaxSendPOSTRequest(uri, postString, targetElement, responseHandler) {
             alert(e);
         }
 
+        // set content type
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
         // rimozione dell'header "connection" come "keep alive"
         xhr.setRequestHeader("connection", "close");
 
@@ -84,6 +87,34 @@ function ajaxSendPOSTRequest(uri, postString, targetElement, responseHandler) {
     }
     else
         targetElement.innerHTML = "Errore durante creazione xmlhttpRequest.";
+}
+
+//template
+function ajaxSendGETRequest(uri, targetElement, responseHandler) {
+	var xhr = myGetXmlHttpRequest();
+
+	if (xhr) {
+		// impostazione controllo e stato della richiesta
+		xhr.onreadystatechange = function() {
+			ajaxCallback(xhr, targetElement, responseHandler);
+		};
+
+		// impostazione richiesta asincrona in GET
+		// del file specificato
+		try {
+			xhr.open("get", uri, true);
+		} catch (e) {
+			// Exceptions are raised when trying to access cross-domain URIs
+			alert(e);
+		}
+
+		// rimozione dell'header "connection" come "keep alive"
+		xhr.setRequestHeader("connection", "close");
+
+		// invio richiesta
+		xhr.send();
+	} else
+		targetElement.innerHTML = "Errore durante creazione xmlhttpRequest.";
 }
 
 //template

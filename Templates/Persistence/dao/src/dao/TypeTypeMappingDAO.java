@@ -7,7 +7,7 @@ public interface RistorantePiattoMappingDAO {
 		// --- CRUD -------------
 		public void create(int idr, int idp);
 
-		public boolean delete(int idRistorante, int idPiatto);		
+		public boolean delete(int idr, int idp);		
 		// ----------------------------------
 		public List<PiattoDTO> getPiattiFromResturant(int id);
 		// ----------------------------------		

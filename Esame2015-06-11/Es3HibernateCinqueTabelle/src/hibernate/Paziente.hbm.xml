@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Paziente" table="paziente">
+        <!--Chiave surrogata con ID-->
+        <id name="idPaziente" column="idPaziente" />
+        <property name="codiceFiscale" column="codiceFiscale" unique="true" not-null="true" />
+        <property name="nome" column="nome" />
+        <property name="cognome" column="cognome" />
+        <property name="sesso" column="sesso" />
+        
+        <set name="richieste" table="richiesta" inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <!-- nome della colonna foreign key sulla tabella esterna-->
+                <column name="idPaziente" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.RichiestaMedica" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

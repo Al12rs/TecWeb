@@ -35,17 +35,17 @@ public class Db2TypeMappingDAO implements
 			;
 
 		// SELECT * FROM table WHERE idcolumns = ?;
-		static String read_by_ristoranteID = 
+		static String read_by_ID_1 = 
 			"SELECT * " +
 				"FROM " + TABLE + " " +
-				"WHERE " + ID_1 + " = ? "
+				"WHERE #tabella2.id2 = " +ID_2+ " AND " + ID_1 + " = ? "
 			;
 
 		// SELECT * FROM table WHERE idcolumns = ?;
-		static String read_by_piattoID = 
+		static String read_by_ID_2 = 
 			"SELECT * " +
 				"FROM " + TABLE + "  " +
-				"WHERE " + ID_2 + " = ? "
+				"WHERE #tabella1.id1 = " +ID_1+" AND " + ID_2 + " = ? "
 			;
 		
 		// SELECT * FROM table WHERE stringcolumn = ?;

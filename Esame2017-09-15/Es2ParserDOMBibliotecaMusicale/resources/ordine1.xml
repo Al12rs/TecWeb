@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<ordine 
+    supermercato="Esselunga"
+    fasciaOraria="12-13"
+    pagamento="in contanti"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="ordine.xsd">
+
+    <FV>
+        <prodotto>
+            <marca>Bonduelle</marca>
+            <descrizione>Insalotona mista</descrizione>
+            <prezzo>€2.19</prezzo>
+        </prodotto>
+    </FV>
+    <CP>
+        <prodotto>
+            <marca>Amadori</marca>
+            <descrizione>Crocchette di pollo</descrizione>
+            <prezzo>€4.59</prezzo>
+        </prodotto>
+        <prodotto>
+            <marca>Aia</marca>
+            <descrizione>Cotoletta di pollo</descrizione>
+            <prezzo>€4.99</prezzo>
+        </prodotto>
+    </CP>
+    
+</ordine>

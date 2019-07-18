@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate.RichiestaMedica" table="richiesta">
+        <!--Chiave surrogata con ID-->
+        <id name="idRichiestaMedica" column="idRichiestaMedica" />
+        <property name="codicePaziente" column="codicePaziente" not-null="true" />
+        <property name="data" column="data" not-null="true" />
+        <property name="nomeMedico" column="nomeMedico" />
+        
+        <set name="accertamenti" table="accertamento" inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <!-- nome della colonna foreign key sulla tabella esterna-->
+                <column name="idRichiestaMedica" not-null="false" />
+            </key>
+            <one-to-many class="hibernate.Accertamento" />
+        </set>
+        
+        <many-to-one name="paziente" class="hibernate.Paziente" fetch="select" >
+            <!--Qui ci va il nome della colonna foreignKey da aggiungere alla tabella corrente -->
+            <column name="idPaziente" not-null="false" />
+        </many-to-one>
+        
+        
+    </class>
+</hibernate-mapping>

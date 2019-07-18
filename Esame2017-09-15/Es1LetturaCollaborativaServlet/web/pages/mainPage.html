@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>Home</title>
+    <script type="text/javascript" src="../scripts/utils.js"></script>
+    <script type="text/javascript" src="../scripts/ajax.js"></script>
+    <link rel="stylesheet" href="../styles/default.css" type="text/css" />
+</head>
+
+<body>
+	<h1>Main page</h1>
+	<h3>Richiedi porzione di file</h3>
+    <form>
+        <input type="button" value="Richiedi" id="request" onclick="requestPortion()" />
+    </form>
+    <h4>Content richiesto</h4>
+    <div id="richiesta"></div>
+    <h4>Esito conteggio</h4>
+    <form id="esito" method="post" action="../contentgiver">
+    	<input type="text" name="count" value=""/>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate.Accertamento" table="accertamento">
+        <id name="idAccertamento" column="idAccertamento" />
+        <property name="codice" column="codice" unique="true" not-null="true"/>
+        <property name="esito" column="esito" />
+        
+        <many-to-one name="richiesta" class="hibernate.RichiestaMedica" fetch="select" >
+            <!--Qui ci va il nome della colonna foreignKey da aggiungere alla tabella corrente -->
+            <column name="idRichiestaMedica" not-null="false" />
+        </many-to-one>
+        
+        <many-to-one name="tipo" class="hibernate.TipoAccertamento" fetch="select" >
+            <!--Qui ci va il nome della colonna foreignKey da aggiungere alla tabella corrente -->
+            <column name="idTipoAccertamento" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<biblioteca
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="bibliotecaMusicale.xsd">
+
+    <musicista>
+        <nome>Giuseppe</nome>
+        <cognome>Verdi</cognome>
+        <genereMusicale>Opera</genereMusicale>
+        <album>
+            <titoloAlbum>Aida</titoloAlbum>
+            <annoPubblicazione>1840</annoPubblicazione>
+        </album>
+    </musicista>
+    <musicista>
+        <nome>Pinco</nome>
+        <cognome>Pallino</cognome>
+        <nomeArte>ElPanco</nomeArte>
+        <genereMusicale>Rap</genereMusicale>
+        <album>
+            <titoloAlbum>In the ghetto</titoloAlbum>
+            <annoPubblicazione>2013</annoPubblicazione>
+            <listaBrani>
+                <brano>
+                    <titoloBrano>Homies forever</titoloBrano>
+                    <lunghezzaBrano>4:23</lunghezzaBrano>
+                </brano>
+            </listaBrani>
+        </album>
+        <album>
+            <titoloAlbum>Brotherhood</titoloAlbum>
+            <annoPubblicazione>2015</annoPubblicazione>
+            <listaBrani>
+                <brano>
+                    <titoloBrano>Run for your lives</titoloBrano>
+                    <lunghezzaBrano>2:12</lunghezzaBrano>
+                </brano>
+                <brano>
+                    <titoloBrano>Survivors</titoloBrano>
+                    <lunghezzaBrano>3:15</lunghezzaBrano>
+                </brano>
+            </listaBrani>
+        </album>
+    </musicista>
+    
+</biblioteca>

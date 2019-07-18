@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Tipo telefono-->
+    <xs:complexType name="telefono">
+        <xs:sequence>
+            <xs:element name="prefisso" type="xs:positiveInteger" />
+            <xs:element name="numero" type="xs:positiveInteger" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo indirizzo-->
+    <xs:complexType name="indirizzo">
+        <xs:sequence>
+            <xs:element name="via" type="xs:string"/>
+            <xs:element name="ncivico" type="xs:positiveInteger"/>
+            <xs:element name="cap" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9]*"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo ingrediente -->
+    <xs:complexType name="ingrediente">
+        <xs:attribute name="nome" type="xs:string" use="required" />
+    </xs:complexType>
+    
+    <!-- Tipo piatto -->
+    <xs:complexType name="piatto">
+        <xs:sequence>
+            <xs:element name="ingrediente" type="ingrediente" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="nome" type="xs:string" use="required"/>
+        <xs:attribute name="prezzo" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="€[0-9]*\.[0-9]{2}" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Tipo categoria -->
+    <xs:complexType name="categoria">
+        <xs:sequence>
+            <xs:element name="piatto" type="piatto" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Tipo menu -->
+    <xs:complexType name="menu">
+        <xs:all>
+            <xs:element name="antipasti" type="categoria" minOccurs="0" />
+            <xs:element name="primi" type="categoria" minOccurs="0" />
+            <xs:element name="secondi" type="categoria" minOccurs="0" />
+            <xs:element name="contorno" type="categoria" minOccurs="0" />
+            <xs:element name="desserts" type="categoria" minOccurs="0" />
+        </xs:all>
+    </xs:complexType>
+    
+    <!-- Tipo ristorante-->
+    <xs:complexType name="ristorante">
+        <xs:sequence>
+            <xs:element name="nome" type="xs:string"/>
+            <xs:element name="localita" type="xs:string"/>
+            <xs:element name="indirizzo" type="indirizzo"/>
+            <xs:element name="telefono" type="telefono"/>
+            <xs:element name="sito" type="xs:string" minOccurs="0"/>
+            <xs:element name="menu" type="menu"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo offerte -->
+    <xs:complexType name="offerte">
+        <xs:sequence>
+            <xs:element name="ristorante" type="ristorante" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Elementi definiti -->
+    <xs:element name="offerte" type="offerte" />
+
+</xs:schema>

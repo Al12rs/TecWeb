@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>Home</title>
+    <script type="text/javascript" src="../scripts/utils.js"></script>
+    <script type="text/javascript" src="../scripts/ajax.js"></script>
+    <script type="text/javascript">
+    	var url = new URL(document.URL);
+    	var urlSearchParams = url.searchParams;
+    	var x = urlSearchParams.get("x");
+    	
+    	function checkOnLoad(){
+    		if(x != null){
+        		document.getElementById("inputLabel").innerHTML = "Rimanenti:";
+        		document.getElementById("numFile").value = x;
+        		document.getElementById("numFile").readOnly = true;
+        		if(x == 0){
+        			document.getElementById("calculateButton").value="Conta";
+        			document.getElementById("calculateButton").setAttribute("onclick", "contaOccorrenze();")
+        		}
+        	}
+    	}
+    </script>
+    <link rel="stylesheet" href="../styles/default.css" type="text/css" />
+</head>
+
+<body onload="checkOnLoad();">
+    <form method="get" action="../loadingservlet">
+        <label id="inputLabel" for="numFile">Numero file:</label><br />
+        <input id="numFile" type="text" name="numFile" value="" /><br />
+        <input type="button" value="Immetti" id="calculateButton" onclick="this.form.submit()" />
+    </form>
+    <br/>
+    <br/>
+    <h2>Risultato:</h2>
+    <div name="risultato" id="risultato">
+        
+    </div>
+</body>
+
+</html>

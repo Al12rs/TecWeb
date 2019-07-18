@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<offerte
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="ristoranti.xsd">
+
+    <ristorante>
+        <nome>Da Gigi</nome>
+        <localita>Napoli</localita>
+        <indirizzo>
+            <via>via nuova</via>
+            <ncivico>32</ncivico>
+            <cap>012345</cap>
+        </indirizzo>
+        <telefono>
+            <prefisso>39</prefisso>
+            <numero>1234567</numero>
+        </telefono>
+        <sito>www.giggino.it</sito>
+        <menu>
+            <antipasti>
+                <piatto nome="crostini" prezzo="€4.00">
+                    <ingrediente nome="pane"/>
+                    <ingrediente nome="pomodorini"/>
+                </piatto>
+            </antipasti>
+            <primi>
+                <piatto nome="spaghetti allo scoglio" prezzo="€13.00">
+                    <ingrediente nome="spaghetti"/>
+                    <ingrediente nome="pesce fresco"/>
+                </piatto>
+            </primi>
+            <secondi>
+                <piatto nome="castrato" prezzo="€8.00">
+                    <ingrediente nome="carne di agnello"/>
+                </piatto>
+            </secondi>
+            <contorno>
+                <piatto nome="patatine fritte" prezzo="€3.00">
+                    <ingrediente nome="patate"/>
+                </piatto>
+            </contorno>
+            <desserts>
+                <piatto nome="tiramisu" prezzo="€5.00">
+                    <ingrediente nome="mascarpone"/>
+                    <ingrediente nome="cacao"/>
+                </piatto>
+            </desserts>
+        </menu>        
+    </ristorante>    
+</offerte>

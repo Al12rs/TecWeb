@@ -1,0 +1,137 @@
+body {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 9pt;
+    height: 100%;
+    margin:0;
+    padding:0;
+
+}
+
+.topBar {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+    /*line-height: 0px;*/
+}
+
+#topBarLogo{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.searchbar {
+    background: white;
+    display: inline-block;
+    border-style:solid;
+    border-color: grey;
+    border-width: 1px;
+    height: 20px;
+    width: 40%;
+}
+
+.searchInput{
+	height: 100%;
+	width: 92%;
+	border-width: 0px;
+    float: left;
+}
+
+.searchImg{
+	height: 100%;
+    width: 8%;
+    float:right;
+}
+
+#horizontalMenu{
+    float:left;
+    margin: 0px;
+    padding:0px;
+    border-bottom: 2px;
+    border-bottom-style: outset; 
+    border-block-color: rgba(177, 177, 177, 0.425);
+    width:100%;
+    height: 30px;
+}
+
+.navMenu li {
+    height: 100%;
+    float:left;
+    list-style: none;
+    padding-right: 20px;
+    padding-left: 0px;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+.navMenu li a {
+    text-decoration: none;
+    color: rgb(119, 119, 119);
+
+}
+
+#selected {
+    color:blue;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+#mainSection {
+    margin-left: 10%;
+    margin-right: 5;
+    float:left;
+
+}
+
+.titleLink{
+    font-size: 1.5em;
+}
+
+.link{
+    color:green;
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
+
+.description{
+    padding-top:0px;
+    margin-top: 0px;
+}
+
+#rightSideBar{
+    float:right;
+    width: 40%;
+    margin-right: 2%;
+    margin-top: 2%;
+    border-style:solid;
+    border-color: grey;
+    border-width: 1px;
+}
+
+#mosaico{
+    width:100%;
+    height: 20%;
+}
+
+#firstImage{
+    width:50%;
+    height:100%;
+    float:left;
+}
+
+#secondImage{
+    width:50%;
+    height:50%;
+    float:left;
+}
+
+#thirdImage{
+    width:50%;
+    height:50%;
+    float:left;
+}
+
+.strong{
+    font-weight:bold;
+}

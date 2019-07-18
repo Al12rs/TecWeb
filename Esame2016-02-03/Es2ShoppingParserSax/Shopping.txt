@@ -1,0 +1,7 @@
+abiti
+CapoAbbigliamento [fotografia=capo.jpeg, descrizione=desc, prezzo=€15.00]
+camice
+CapoAbbigliamento [fotografia=capo.jpeg, descrizione=desc, prezzo=€15.00]
+CapoAbbigliamento [fotografia=capo.jpeg, descrizione=desc, prezzo=€15.00]
+CapoAbbigliamento [fotografia=capo.jpeg, descrizione=desc, prezzo=€15.00]
+

@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>Home</title>
+    <script type="text/javascript" src="../scripts/utils.js"></script>
+    <script type="text/javascript" src="../scripts/ajax.js"></script>
+    <link rel="stylesheet" href="../styles/default.css" type="text/css" />
+</head>
+<body>
+    <fieldset>
+        <legend>Input</legend>
+        <form>
+            <!--method="post" action="../servlet"-->
+            <label for="input1">Riga A:</label><br/>
+            <input type="text" name="rigaA" value=""/><br/>
+            <label for="input2">Riga B:</label><br/>
+            <input type="text" name="rigaB" value=""/><br/>
+            <input type="button" value="Submit" id="submitButton" onclick="calcolaMatrice(this.form.input1.value, this.form.input2.value)" />
+        </form>
+    </fieldset>
+    <br/>
+    <br/>
+    <h3>Risultato:</h3>
+    <div name="risultato" id="risultato">
+        
+    </div>
+</body>
+
+</html>

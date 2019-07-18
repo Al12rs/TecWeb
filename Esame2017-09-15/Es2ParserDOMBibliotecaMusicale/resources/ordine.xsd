@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Tipo supermercato -->
+    <xs:simpleType name="supermercato">
+        <xs:restriction base="xs:string">
+            <!-- Supermercati aderenti a Supermercato24 -->
+            <xs:enumeration value="Esselunga" />
+            <xs:enumeration value="Conad" />
+            <xs:enumeration value="Carrefour" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Tipo fascia oraria di un'ora -->
+    <xs:simpleType name="fasciaOraria">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="00-01"/>
+            <xs:enumeration value="01-02"/>
+            <xs:enumeration value="02-03"/>
+            <xs:enumeration value="03-04"/>
+            <xs:enumeration value="04-05"/>
+            <xs:enumeration value="05-06"/>
+            <xs:enumeration value="06-07"/>
+            <xs:enumeration value="07-08"/>
+            <xs:enumeration value="08-09"/>
+            <xs:enumeration value="09-10"/>
+            <xs:enumeration value="10-11"/>
+            <xs:enumeration value="11-12"/>
+            <xs:enumeration value="12-13"/>
+            <xs:enumeration value="13-14"/>
+            <xs:enumeration value="14-15"/>
+            <xs:enumeration value="15-16"/>
+            <xs:enumeration value="16-17"/>
+            <xs:enumeration value="17-18"/>
+            <xs:enumeration value="18-19"/>
+            <xs:enumeration value="19-20"/>
+            <xs:enumeration value="20-21"/>
+            <xs:enumeration value="21-22"/>
+            <xs:enumeration value="22-23"/>
+            <xs:enumeration value="23-24"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Tipo pagamento -->
+    <xs:simpleType name="pagamento">
+        <xs:restriction base="xs:string">
+            <!-- Metodi di pagamento possibili -->
+            <xs:enumeration value="on-line" />
+            <xs:enumeration value="in contanti" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Tipo prodotto -->
+    <xs:complexType name="prodotto">
+        <xs:sequence>
+            <xs:element name="marca" type="xs:string" />
+            <xs:element name="descrizione" type="xs:string" />
+            <xs:element name="prezzo">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="€[0-9]*\.[0-9]{2}" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo categoria -->
+    <xs:complexType name="categoria">
+        <xs:sequence>
+            <xs:element name="prodotto" type="prodotto" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo ordine -->
+    <xs:complexType name="ordine">
+        <xs:all>
+            <xs:element name="FV" type="categoria" minOccurs="0" />
+            <xs:element name="PP" type="categoria" minOccurs="0" />
+            <xs:element name="L" type="categoria" minOccurs="0" />
+            <xs:element name="CP" type="categoria" minOccurs="0" />
+        </xs:all>
+        <xs:attribute name="supermercato" type="supermercato" use="required" />
+        <xs:attribute name="fasciaOraria" type="fasciaOraria" use="required" />
+        <xs:attribute name="pagamento" type="pagamento" use="required" />
+    </xs:complexType>
+    
+    <!-- Elementi definiti -->
+    <xs:element name="ordine" type="ordine" />
+    
+</xs:schema>

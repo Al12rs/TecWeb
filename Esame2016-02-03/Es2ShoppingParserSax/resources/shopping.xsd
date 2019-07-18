@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <!--Tipo email-->
+    <xs:simpleType name="emailType">
+        <xs:restriction base ="xs:string">
+            <xs:pattern value=".*@.*\..*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!--Tipo password-->
+    <xs:simpleType name="passwordType">
+        <xs:restriction base="xs:string">
+            <!--((?=.*[A-Za-z])(?=.*\d)(?=.*[$!*?])[A-Za-z\d$!*?]{8})-->
+            <xs:pattern value=".{8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!--Tipo oggetto-->
+    <xs:complexType name="oggettoType">
+        <xs:attribute name="fotografia" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value=".*\.jpeg"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="descrizione" type="xs:string" use="required"/>
+        <xs:attribute name="prezzo" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="€[0-9]*\.[0-9]{2}" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <!--Tipo scelta-->
+    <xs:complexType name="sceltaType">
+        <xs:sequence>
+            <xs:element name="capo" type="oggettoType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!--Tipo sessione-->
+    <xs:complexType name="sessioneType">
+        <xs:choice maxOccurs="6">
+            <xs:element name="abiti" type="sceltaType"/>
+            <xs:element name="camice" type="sceltaType"/>
+            <xs:element name="giacche" type="sceltaType"/>
+            <xs:element name="pantaloni" type="sceltaType"/>
+            <xs:element name="gonne" type="sceltaType"/>
+            <xs:element name="ultimiarrivi" type="sceltaType"/>
+        </xs:choice>
+        <xs:attribute name="email" type="emailType" use="required"/>
+        <xs:attribute name="password" type="passwordType" use="required"/>
+    </xs:complexType>
+
+    <!-- Elementi definiti -->
+    <xs:element name="sessione" type="sessioneType" />
+
+</xs:schema>

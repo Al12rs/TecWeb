@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<title>Home</title>
+<script type="text/javascript" src="../scripts/utils.js"></script>
+<script type="text/javascript" src="../scripts/ajax.js"></script>
+<link rel="stylesheet" href="../styles/default.css" type="text/css" />
+</head>
+
+<body>
+	<fieldset>
+		<legend>Input</legend>
+		<form>
+			<label for="textInput">Inserire tra i 1000 e 2000 caratteri:</label><br />
+			<textarea name="textInput" rows="15" cols="150"></textarea><br />
+			<label for="fileName">File su cui salvare:</label><br />
+			<input type="text" name="fileName" value="" /><br />
+			<input type="button" value="Submit" id="calculateButton"
+				onclick="saveToFile(this.form.textInput.value, this.form.fileName.value)" />
+		</form>
+	</fieldset>
+
+	<h3>Risultato:</h3>
+	<div name="risultato" id="risultato"></div>
+</body>
+
+</html>

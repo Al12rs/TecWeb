@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate.Struttura" table="struttura">
+        <id name="idStruttura" column="idStruttura" />
+        <property name="codice" column="codice" unique="true" not-null="true" />
+        <property name="nome" column="nome" />
+        <property name="indirizzo" column="indirizzo" />
+
+        
+        <set name="tipiAccertamento" table="tipoAccertamento_ospedale" inverse="true" cascade="all" >
+            <key>
+                <!-- nome della colonna foreign key sulla tabella esterna (in questo caso di mapping) (metti ID della tebella corrente)-->
+                <column name="idStruttura" not-null="true"/>
+            </key>
+            <!-- in column metti il nome la chiave primaria della tabella esterna -->
+            <many-to-many column="idTipoAccertamento" class="hibernate.TipoAccertamento" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

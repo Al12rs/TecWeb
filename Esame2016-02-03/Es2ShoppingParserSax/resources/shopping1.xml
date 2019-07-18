@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<sessione 
+    email="pippo@paperino.plut"
+    password="Pas$wor0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="shopping.xsd">
+
+    <abiti>
+        <capo fotografia="capo.jpeg" descrizione="desc" prezzo="€15.00"/>
+    </abiti>
+    <camice>
+        <capo fotografia="capo.jpeg" descrizione="desc" prezzo="€15.00"/>
+        <capo fotografia="capo.jpeg" descrizione="desc" prezzo="€15.00"/>
+        <capo fotografia="capo.jpeg" descrizione="desc" prezzo="€15.00"/>
+    </camice>
+    <pantaloni></pantaloni>
+    
+    
+</sessione>
